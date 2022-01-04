@@ -1,0 +1,19 @@
+[tooltip]:before {
+    position: absolute;
+    content: attr(tooltip);
+    pacity: 0;
+}
+
+[tooltip]:focus:before {
+    opacity: 1;
+    margin-top: 10px;
+}
+
+
+/* form-control:hover+.tooltip,
+form-control:focus+.tooltip,
+form-control:active+.tooltip {
+    visibility: visible;
+    opacity: 1;
+    margin-top: 20px;
+} */

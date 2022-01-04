@@ -1,0 +1,9 @@
+.title-container {
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 20%);
+    border-radius: 15px 15px 0 0;
+}
+
+.footer-container {
+    box-shadow: 0 0 5px 0 rgb(0 0 0 / 20%);
+    border-radius: 0 0 15px 15px;
+}

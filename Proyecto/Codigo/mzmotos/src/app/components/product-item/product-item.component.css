@@ -1,0 +1,15 @@
+.item-container {
+    max-height: 75px;
+    margin: 0.25rem 0;
+    padding: 0 1.25rem;
+}
+
+.image-container {
+    height: 50px;
+    width: 50px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+}

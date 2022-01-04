@@ -1,0 +1,18 @@
+<nav class="navbar">
+    <a class="navbar-brand" [routerLink]="paths[0].route">
+        <img src="http://mzmotos.com/static/images/logo.png" width="auto" height="30" alt="">
+    </a>
+
+    <ul class="navbar-nav">
+        <li class="nav-item" *ngFor="let path of paths">
+            <a class="nav-link" [routerLink]="path.route" routerLinkActive="active">
+                <span *ngIf="path.icon" [class]="path.icon"></span> {{(path.text)?path.text:""}}
+            </a>
+        </li>
+    </ul>
+    <ul class="navbar-nav d-flex flex-end">
+        <li class="nav-item">
+            <a class="nav-link" (click)="logout()"><span class="fas fa-sign-out-alt"></span></a>
+        </li>
+    </ul>
+</nav>

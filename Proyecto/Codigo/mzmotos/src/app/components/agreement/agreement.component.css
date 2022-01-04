@@ -1,0 +1,18 @@
+.agree-label {
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0.5em;
+}
+
+.btn-agree {
+    border: none !important;
+    background: #fff !important;
+    color: rgb(1, 169, 38) !important;
+}
+
+.btn-cancel {
+    border: none !important;
+    background: #fff !important;
+    color: rgb(255, 2, 2) !important;
+}

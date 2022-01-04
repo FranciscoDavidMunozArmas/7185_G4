@@ -1,0 +1,187 @@
+* {
+    outline: none !important
+}
+
+.calendar {
+    margin: 1rem;
+    max-width: 800px;
+}
+
+.calendar-stuff {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.day-of-week,
+.date-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.day-of-week {
+    background-color: transparent;
+    text-align: center;
+    width: 100%;
+}
+
+.day-of-week h3,
+.day-of-week h4,
+.day-of-week h5,
+.day-of-week h6,
+.day span,
+.today span {
+    color: var(--primary-color);
+    font-size: 20px;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.day,
+.today {
+    width: 75px;
+    height: 75px;
+    position: relative;
+    transition: all .3s ease;
+    display: flex;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 100%;
+}
+
+.day span,
+.today span {
+    display: flex;
+    align-items: center;
+    vertical-align: center;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+}
+
+.today {
+    background-color: var(--primary-color);
+    border-radius: 100%;
+    color: var(--primary-text-color);
+}
+
+.day-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+}
+
+.day-container:hover>.today,
+.day-container:hover>.day {
+    opacity: 100%;
+    cursor: pointer;
+    border-radius: 100%;
+}
+
+.day-container:hover>.day {
+    border-radius: 100%;
+    border: 1px solid var(--primary-color);
+}
+
+.day-container:hover>.today {
+    box-shadow: 0 0 5px 0 var(--primary-color);
+    color: var(--primary-white);
+}
+
+.day span {
+    color: var(--text-base-color);
+}
+
+.today span {
+    color: var(--primary-white);
+}
+
+.month-indicator {
+    margin-left: 3%;
+    text-align: left;
+    color: var(--title-base-color);
+}
+
+.month-selector button {
+    font-size: 20px;
+}
+
+.today .dot {
+    background-color: var(--primary-white);
+}
+
+.dot {
+    height: 7px;
+    width: 7px;
+    margin: 0.75rem;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    display: inline-block;
+    position: absolute;
+    bottom: -5px;
+}
+
+@media (max-width: 580px) {
+    .day,
+    .today {
+        width: 50px;
+        height: 50px;
+        position: relative;
+        transition: all .3s ease;
+        display: flex;
+        justify-content: center;
+    }
+    .day span,
+    .today span {
+        font-size: 1rem;
+    }
+    .dot {
+        height: 5px;
+        width: 5px;
+    }
+}
+
+@media (max-width: 400px) {
+    .day,
+    .today {
+        width: 40px;
+        height: 40px;
+        position: relative;
+        transition: all .3s ease;
+        display: flex;
+        justify-content: center;
+    }
+    .day span,
+    .today span {
+        font-size: 1rem;
+    }
+    .dot {
+        height: 4px;
+        width: 4px;
+    }
+}
+
+@media (max-width: 325px) {
+    .day,
+    .today {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        transition: all .3s ease;
+        display: flex;
+        justify-content: center;
+    }
+    .day span,
+    .today span {
+        font-size: 0.75rem;
+    }
+    .dot {
+        height: 3px;
+        width: 3px;
+    }
+}

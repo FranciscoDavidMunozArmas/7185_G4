@@ -1,0 +1,85 @@
+<div class="container-fluid pt-4">
+    <div *ngIf="!!selectedClient">
+        <div class="client-selection pointer fadeIn" (click)="showProductSelectionList()">
+            {{ selectedClient.name }}
+            <div class="absolute right mx-3">
+                $ {{ order.total }}
+            </div>
+        </div>
+    </div>
+    <div class="item-container">
+        <div class="fadeIn" *ngFor="let product of products">
+            <div class="mx-2">
+                <app-catalogue-item (handleUnselection)="handleRemoveProductOrder($event)" (handleSelection)="handleAddProductOrder($event)" [product]="product" [enableSelection]="!!selectedClient"></app-catalogue-item>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="!selectedClient; then normalButtonSet; else orderButtonSet"></div>
+
+<ng-template #normalButtonSet>
+    <div class="float-right-bottom fadeIn">
+        <div class="d-flex flex-column">
+            <app-float-button icon="fas fa-clipboard-list" (eventFunction)="showOrderList()"></app-float-button>
+            <app-float-button icon="fa fa-plus" (eventFunction)="showSelectionModal()"></app-float-button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #orderButtonSet>
+    <div class="float-right-bottom fadeIn">
+        <div class="d-flex flex-column">
+            <app-float-button icon="fas fa-times" (eventFunction)="unselectClient()"></app-float-button>
+            <app-float-button icon="fas fa-check" (eventFunction)="showAgreementModal()"></app-float-button>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #setSelection let-modal>
+    <app-client-selection (closeEvent)="modalClose()" (handleSelection)="handleClientSelection($event)"></app-client-selection>
+</ng-template>
+
+<ng-template #agreement let-modal>
+    <app-agreement [text]="'¿Registrar pedido?'" (dismissEvent)="modalClose()" (agreeEvent)="handleAgreement()"></app-agreement>
+</ng-template>
+
+<ng-template #productSelectionList let-modal>
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-borderless" (click)="modalClose()">
+            <span class="fas fa-times"></span>
+        </button>
+    </div>
+    <div class="items-container scroll-y-auto">
+        <div *ngFor="let product of order.list">
+            <app-product-item [product]="product"></app-product-item>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex justify-content-start">
+                    <h6>TOTAL:</h6>
+                </div>
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-end">
+                    <h6>$ {{order.total}}</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #orderList let-modal>
+    <div class="order-container p-2">
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-borderless" (click)="modalClose()">
+                <span class="fas fa-times"></span>
+            </button>
+        </div>
+        <div class="items-container scroll-y-auto py-2 px-3">
+            <app-order-container [salesmanId]="token.token"></app-order-container>
+        </div>
+    </div>
+</ng-template>

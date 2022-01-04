@@ -1,0 +1,19 @@
+<div class="position-fixed top right" style="width: 600px;">
+    <div class="row">
+        <div class="col">
+            <div class="card h-screen">
+                <div class="card-body ">
+                    <app-search [placeholder]="'Buscar'" (searchEvent)="searchClient($event)" (cancelEvent)="cancelSearch()"></app-search>
+                    <div class="scroll-y-auto">
+                        <div *ngFor="let client of searchResults">
+                            <div class="item-client pointer" (click)="handleSelectionClient(client)">
+                                <p>{{ client.name }}</p>
+                                <p>{{ client.address }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

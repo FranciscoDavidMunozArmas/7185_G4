@@ -1,0 +1,20 @@
+<div class="container item-container">
+    <div class="row">
+        <div class="col">
+            <div class="image-container">
+                <img [src]="imagePath" (error)="onErrorImage($event)" alt="">
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-flex flex-column justify-content-start">
+                <h6>{{ product.product.name }}</h6>
+                <p>PRICE: $ {{ product.product.price }}</p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-flex justify-content-end">
+                <span class="badge badge-pill badge-primary">{{ product.quantity }}</span>
+            </div>
+        </div>
+    </div>
+</div>

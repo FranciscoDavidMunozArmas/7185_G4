@@ -1,0 +1,566 @@
+:root {
+    --primary-color: #f13030;
+    --primary-white: #fff;
+    --text-base-color: rgb(37, 37, 37);
+    --title-base-color: rgb(91, 91, 91);
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    height: 100vh;
+}
+
+a {
+    color: var(--primary-color);
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    transition: all .3s ease;
+}
+
+::-webkit-scrollbar:before {
+    width: 0px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0);
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(146, 146, 146);
+    border-radius: 5px;
+    transition: all .3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background: rgb(56, 56, 56);
+    filter: drop-shadow(45%);
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    min-height: 100%;
+}
+
+.h-screen {
+    height: 100vh !important;
+}
+
+.h-full {
+    height: 100% !important;
+}
+
+.h-auto {
+    height: auto !important;
+}
+
+.w-full {
+    width: 100% !important;
+}
+
+.w-screen {
+    width: 100vh !important;
+}
+
+.position-fixed {
+    position: fixed;
+}
+
+.top {
+    top: 0;
+}
+
+.right {
+    right: 0;
+}
+
+.left {
+    left: 0;
+}
+
+.bottom {
+    bottom: 0;
+}
+
+.relative {
+    position: relative;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.hidden {
+    display: none;
+}
+
+.scroll-y-auto {
+    overflow-y: auto;
+}
+
+.scroll-x-auto {
+    overflow-x: auto;
+}
+
+.inner-shadow {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset -100px 0px 100px rgb(0 0 0/ 75%);
+}
+
+.radious {
+    border-radius: .75rem;
+}
+
+.borderless {
+    border: none;
+}
+
+.bg-transparent {
+    background: transparent;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.z-index-1 {
+    z-index: 1;
+}
+
+.card {
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    /* -webkit-border-radius: 10px 10px 10px 10px;
+    border-radius: 10px 10px 10px 10px; */
+    padding: 30px;
+    width: 100%;
+    max-width: 600px;
+    position: relative;
+    padding: 0px;
+    -webkit-box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);
+    box-shadow: 0 0 10px 0 rgb(0 0 0 / 30%);
+    text-align: center;
+    transition: all .3s ease;
+}
+
+.card,
+.card-header {
+    background: #fff;
+}
+
+.card-header {
+    border-bottom: 0px;
+    -webkit-border-radius: 10px 10px 0 0;
+    border-radius: 10px 10px 0 0;
+    padding: 25px 0 0 0;
+}
+
+.card-footer {
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+    background-color: #f6f6f6;
+    border-top: 1px solid #dce8f1;
+    padding: 25px;
+}
+
+.card-header,
+.card-footer {
+    text-align: center;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="email"],
+.form-group input[type="time"],
+.form-group input[type="date"],
+.form-group input[type="datetime"],
+.form-group input[type="password"],
+.form-group input[type="datetime-local"] {
+    border: 1px solid transparent;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+    border-radius: 0.55rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="email"],
+.form-group input[type="time"],
+.form-group input[type="date"],
+.form-group input[type="datetime"],
+.form-group input[type="datetime-local"],
+.form-group input[type="password"],
+.form-group textarea,
+.form-group select {
+    transition: all .3s ease;
+}
+
+.form-group textarea:focus,
+.form-group select:focus {
+    border-radius: 0.25rem;
+    border: 1px solid var(--primary-color);
+}
+
+.form-group textarea:focus,
+.form-group select:focus,
+.form-group input:focus {
+    box-shadow: none;
+    border: 1px solid var(--primary-color);
+}
+
+.btn {
+    transition: all .3s ease;
+}
+
+.btn span {
+    color: var(--primary-white)
+}
+
+.btn:hover {
+    box-shadow: 0 0px 4px #000
+}
+
+.btn-check:active+.btn-primary:focus,
+.btn-check:checked+.btn-primary:focus,
+.btn-primary.active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:hover,
+.btn-primary:focus>span,
+.btn-primary:active>span,
+.btn-primary:hover>span {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    background-color: var(--prmary-white);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-float {
+    margin: 10px;
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+    box-shadow: 0px 0px 0.1rem #000;
+    transition: all .3s ease;
+}
+
+.btn-float:hover,
+.btn-float:focus,
+.btn-float:active {
+    color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    background-color: var(--primary-white) !important;
+    border-radius: 100%;
+    box-shadow: 0px 0px 0.25rem #000;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: 0px 0px 0.25rem #000;
+}
+
+.btn-inverted {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: none;
+}
+
+.btn-inverted:hover {
+    box-shadow: none;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.btn-borderless {
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.float-right-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
+.underlineHover:after {
+    display: block;
+    left: 0;
+    bottom: -10px;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    content: "";
+    transition: width 0.2s;
+}
+
+.underlineHover:hover:after {
+    width: 100%;
+}
+
+
+/*Animations*/
+
+.shrink {
+    -webkit-animation-name: shrink;
+    animation-name: shrink;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes shrink {
+    0% {
+        -webkit-transform: scale3d(100%, 100%, 0);
+        transform: scale3d(100%, 100%, 0);
+    }
+    100% {
+        -webkit-transform: scale3d(50%, 50%, 0);
+        transform: scale3d(50%, 50%, 0);
+    }
+}
+
+@-webkit-keyframes shrink {
+    0% {
+        -webkit-transform: scale3d(100%, 100%, 0);
+        transform: scale3d(100%, 100%, 0);
+    }
+    100% {
+        -webkit-transform: scale3d(50%, 50%, 0);
+        transform: scale3d(50%, 50%, 0);
+    }
+}
+
+.moveUp {
+    -webkit-animation-name: moveUp;
+    animation-name: moveUp;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes moveUp {
+    0% {
+        -webkit-transform: translate3d(0, 100%, 0);
+        transform: translate3d(0, 100%, 0);
+    }
+    100% {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes moveUp {
+    0% {
+        -webkit-transform: translate3d(0, 50%, 0);
+        transform: translate3d(0, 50%, 0);
+    }
+    100% {
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.fadeInLeft {
+    -webkit-animation-name: fadeInLeft;
+    animation-name: fadeInLeft;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(-100%, 0, 0);
+        transform: translate3d(-100%, 0, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.fadeInRight {
+    -webkit-animation-name: fadeInRight;
+    animation-name: fadeInRight;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(100%, 0, 0);
+        transform: translate3d(100%, 0, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 50%, 0);
+        transform: translate3d(0, 50%, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, 50%, 0);
+        transform: translate3d(0, 50%, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.fadeIn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.first {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
+
+.second {
+    -webkit-animation-delay: 0.6s;
+    -moz-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.third {
+    -webkit-animation-delay: 0.8s;
+    -moz-animation-delay: 0.8s;
+    animation-delay: 0.8s;
+}
+
+.fourth {
+    -webkit-animation-delay: 1s;
+    -moz-animation-delay: 1s;
+    animation-delay: 1s;
+}

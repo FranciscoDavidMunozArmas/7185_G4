@@ -1,0 +1,28 @@
+<div class="wrapper">
+
+    <div class="card fadeInUp first">
+        <form #loginForm="ngForm" (ngSubmit)="submitUser(loginForm)" class="card-body">
+            <h5>Iniciar Sesión</h5>
+            <div class="group">
+                <div class="form-group">
+                    <input [(ngModel)]="input.username" (ngModelChange)="onChange(username)" type="text" name="username" class="form-control" placeholder="Usuario" #username required>
+                </div>
+                <div class="form-group">
+                    <input [(ngModel)]="input.password" (ngModelChange)="onChange(password)" type="password" name="password" class="form-control" placeholder="Contraseña" #password required>
+                </div>
+            </div>
+            <div class="form-check">
+                <input [(ngModel)]="input.keepLog" (ngModelChange)="onChange(keepLog)" name="keepLog" class="form-check-input" type="checkbox" #keepLog>
+                <label class="form-check-label" for="flexCheckChecked">
+                    Mantenerse Conectado
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary">Ingresar</button>
+        </form>
+        <a class="form-link underlineHover mt-3">¿Olvidaste la contraseña?</a>
+    </div>
+
+    <div class="logo-container">
+        <img src="https://mzmotos.com/static/images/logo.png" alt="">
+    </div>
+</div>

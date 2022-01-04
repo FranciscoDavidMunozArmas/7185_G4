@@ -1,0 +1,43 @@
+<div class="card" [style]="style">
+    <div class="d-flex">
+        <div class="card-body" (click)="showAppointmentForm()">
+            <div class="container">
+                <h4>{{appointment.client.name}}</h4>
+                <p>{{date}}</p>
+            </div>
+        </div>
+        <div class="btn-group">
+            <button class="btn btn-outline-light" (click)="checkCard()" [style]="!appointment.state ? 'color: #000;' : 'color: var(--primary-color);'" style="box-shadow: none; background: none; border: none;"><span class="fa fa-check"></span></button>
+            <button class="btn btn-outline-success" (click)="showNotifyForm()"><span class="fa fa-bell"></span></button>
+            <button *ngIf="!disableDelete" class="btn btn-outline-danger" (click)="showAgreeForm()"><span class="fa fa-trash"></span></button>
+        </div>
+    </div>
+</div>
+
+
+<ng-template #agreeForm let-modal>
+    <div class="d-flex">
+        <a class="btn close-btn " (click)="modalClose() "><span class="fa fa-times "></span></a>
+    </div>
+    <div class="d-flex justify-content-center">
+        <app-agreement text="¿Esta seguro que desea eliminar?" (agreeEvent)="deleteCard()" (dismissEvent)="modalClose()"></app-agreement>
+    </div>
+</ng-template>
+
+<ng-template #notifyForm let-modal>
+    <div class="d-flex">
+        <a class="btn close-btn " (click)="modalClose() "><span class="fa fa-times "></span></a>
+    </div>
+    <div class="d-flex justify-content-center">
+        <app-notify text="¿Esta seguro que desea eliminar?" (notifyEvent)="notify($event)" (cancelEvent)="modalClose()"></app-notify>
+    </div>
+</ng-template>
+
+<ng-template #appointmentForm let-modal>
+    <div class="d-flex">
+        <a class="btn close-btn " (click)="modalClose() "><span class="fa fa-times "></span></a>
+    </div>
+    <div class="d-flex justify-content-center">
+        <app-appointment-form [appointment]="appointment" (saveEvent)="updateAppointment($event)" (cancelEvent)="modalClose() "></app-appointment-form>
+    </div>
+</ng-template>

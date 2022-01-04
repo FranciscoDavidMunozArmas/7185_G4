@@ -1,0 +1,13 @@
+<div class="container mb-4">
+    <form (ngSubmit)="search(searchBox)" #searchBox="ngForm">
+        <div class="form-group d-flex">
+            <label for="search" style="font-size: 1.5rem; margin: 0 0.25rem 0 0;"><span class="fa fa-search"></span></label>
+            <input class="form-control" [(ngModel)]="text" [placeholder]="placeholder" type="text" name="search" id="" class="form-control" placement="top" [ngbTooltip]="tooltip" triggers="focus">
+        </div>
+
+        <div class="btn-group">
+            <button type="submit" class="btn btn-outline-primary"><span class="fa fa-search"></span> Aceptar</button>
+            <button type="button" class="btn btn-outline-danger" (click)="cancel()"><span class="fa fa-times"></span> Cancelar</button>
+        </div>
+    </form>
+</div>

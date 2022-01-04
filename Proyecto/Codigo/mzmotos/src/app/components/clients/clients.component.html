@@ -1,0 +1,12 @@
+<div class="container py-4">
+    <div *ngFor="let client of this.clients; let i = index">
+        <div class="row">
+            <div class="col-md d-flex justify-content-center">
+                {{client.name}}
+            </div>
+            <div class="col-md d-flex justify-content-center">
+                {{qty[i]}}
+            </div>
+        </div>
+    </div>
+</div>

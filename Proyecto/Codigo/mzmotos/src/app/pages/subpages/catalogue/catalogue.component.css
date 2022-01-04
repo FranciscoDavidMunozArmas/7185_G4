@@ -1,0 +1,28 @@
+.item-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.client-selection {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: #fff;
+    background: #f1303093;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 0 5px #f1303093;
+    top: 3.5rem;
+    left: 0;
+    z-index: 10;
+}
+
+.items-container {
+    max-height: 80vh;
+}
+
+.order-container {
+    max-width: 100vw;
+}

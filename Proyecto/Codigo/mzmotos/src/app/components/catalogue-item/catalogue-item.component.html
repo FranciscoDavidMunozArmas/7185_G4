@@ -1,0 +1,90 @@
+<div class="relative my-4 mx-2">
+    <div class="row">
+        <div class="col">
+            <div class="product-container z-index-1">
+                <img [src]="imagePath" (error)="onErrorImage($event)" alt="">
+                <div class="inner-shadow radious"></div>
+                <div class="product-label" *ngIf="!showDetails">
+                    <div class="product-name my-2">
+                        <span><h5>{{product.name}}</h5></span>
+                        <span><h6>$ {{product.price}}</h6></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div [class]="!showDetails ? 'hidden' : 'col'">
+            <div class="product-detail-container my-auto fadeInLeft">
+                <div class="mx-3 my-5">
+                    <div class="row">
+                        <div class="col">
+                            <div class="product-title">
+                                <h5>{{product.name}}</h5>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="product-price">
+                                <div class="d-flex justify-content-center flex-column">
+                                    <h5>$ {{product.price}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-details my-1">
+                    <div *ngIf="enableSelection; then orderDescription; else detailsDescription"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="absolute right bottom z-index-1">
+        <div *ngIf="enableSelection; then selectionMode; else normalMode"></div>
+    </div>
+</div>
+
+<ng-template #normalMode>
+    <div *ngIf="showDetails; then chevronLeft; else chevronRight"></div>
+</ng-template>
+
+<ng-template #selectionMode>
+    <div *ngIf="selectedProduct; then bookmarkFill; else bookmarkUnfill"></div>
+</ng-template>
+
+<ng-template #chevronRight>
+    <app-float-button icon="fas fa-chevron-right" (eventFunction)="toggleDetails()"></app-float-button>
+</ng-template>
+
+
+<ng-template #chevronLeft>
+    <app-float-button icon="fas fa-chevron-left" (eventFunction)="toggleDetails()"></app-float-button>
+</ng-template>
+
+<ng-template #bookmarkFill>
+    <app-float-button icon="fas fa-bookmark" (eventFunction)="toggleSelected()"></app-float-button>
+</ng-template>
+
+<ng-template #bookmarkUnfill>
+    <app-float-button icon="far fa-bookmark" (eventFunction)="toggleSelected()"></app-float-button>
+</ng-template>
+
+
+<ng-template #detailsDescription>
+    <p class="details">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Vero fugiat optio repudiandae doloribus ut! Reiciendis sed sint sit, voluptatem fugit veritatis soluta blanditiis dolores nemo, quas praesentium alias laboriosam doloribus.</p>
+</ng-template>
+
+<ng-template #orderDescription>
+    <div class="d-flex flex-row justify-content-center h-full">
+        <button class="btn btn-borderless" (click)="removeCounter()">
+            <h5 class="fas fa-minus"></h5>
+        </button>
+        <h5 class="m-0 p-0 text-align-middle product-title">{{ counter }}</h5>
+        <button class="btn btn-borderless" (click)="addCounter()">
+            <h5 class="fas fa-plus"></h5>
+        </button>
+    </div>
+    <div class="w-full d-flex justify-content-center">
+        <div class="total product-title p-3 ">
+            <h5>Total: $ {{ counter * product.price }}</h5>
+        </div>
+    </div>
+</ng-template>

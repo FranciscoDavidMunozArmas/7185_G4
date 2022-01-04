@@ -1,0 +1,36 @@
+<div class="my-4">
+    <div class="row title-container">
+        <div class="col d-flex justify-content-center flex-column">
+            <h5>Client</h5>
+            <p>{{ order.date | date: 'YYYY/MM/dd' }}</p>
+        </div>
+        <div class="col d-flex justify-content-center flex-column">
+            <h5>ITEMS: {{ order.list.length }}</h5>
+            <p>TOTAL: $ {{ order.total }}</p>
+        </div>
+    </div>
+
+    <div *ngIf="showProducts">
+        <div *ngFor="let product of order.list">
+            <app-product-item [product]="product"></app-product-item>
+        </div>
+    </div>
+
+    <div class="row footer-container">
+        <div class="d-flex justify-content-center w-full">
+            <div *ngIf="showProducts; then chevronUp; else chevronDown"></div>
+        </div>
+    </div>
+</div>
+
+<ng-template #chevronUp>
+    <button class="btn btn-borderless" (click)="toggleShowProducts()">
+        <span class="fas fa-chevron-up"></span>
+    </button>
+</ng-template>
+
+<ng-template #chevronDown>
+    <button class="btn btn-borderless" (click)="toggleShowProducts()">
+        <span class="fas fa-chevron-down"></span>
+    </button>
+</ng-template>

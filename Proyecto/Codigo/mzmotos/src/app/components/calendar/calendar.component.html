@@ -1,0 +1,33 @@
+<div class="calendar">
+    <div class="container mb-2">
+        <div class="calendar-stuff">
+            <div class="month-indicator">
+                <h4>
+                    {{ dateSelect | date: 'MMM yy, EEE'}}
+                </h4>
+            </div>
+            <button class="btn btn-inverted btn-sm" (click)="changeMonth(0)">Today</button>
+        </div>
+        <div class="day-of-week">
+            <div *ngFor="let day of week" class="day-name">
+                <h6>{{day | slice:0:3}}</h6>
+            </div>
+        </div>
+        <div class="date-grid">
+            <div class="day-container" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'" *ngFor="let day of monthSelect; let first = first" (click)="clickDay(day)">
+                <div [class]="day?.value == todayDate ? 'today': 'day'">
+                    <span>{{day?.value}}</span>
+                    <span *ngIf="day?.appointment" class="dot"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        <div class="btn-group month-selector">
+            <button class="btn btn-inverted btn-sm" (click)="changeMonth(-1)"><span class="fa fa-chevron-left"></span></button>
+            <button class="btn btn-inverted btn-sm" disabled>{{ dateSelect | date: 'MMMM'}}</button>
+            <button class="btn btn-inverted btn-sm" (click)="changeMonth(1)"><span class="fa fa-chevron-right"></span></button>
+        </div>
+    </div>
+</div>

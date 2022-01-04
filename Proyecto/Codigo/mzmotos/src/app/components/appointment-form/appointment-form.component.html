@@ -1,0 +1,43 @@
+<div class="items-selection-container w-full h-screen position-fixed top right">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card h-screen">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" name="search" class="form-control" placeholder="Buscar">
+                            </div>
+                        </form>
+                        <div class="h-full">
+                            <div *ngFor="let client of clients" [class]="client._id === selectedClient._id ? 'selected client-container' : 'client-container'" (click)="selectClient(client)">
+                                <h4>{{ client.name }}</h4>
+                                <p>{{ client.address }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card h-screen">
+                    <div class="card-body">
+                        <form #appointmentForm="ngForm" (ngSubmit)="submitForm(appointmentForm)" class="d-flex flex-column align-center">
+                            <div class="form-group">
+                                <input type="text" class="w-full" disabled value={{selectedClient.name}}>
+                            </div>
+
+                            <div class="form-group">
+                                <input class="form-control" [(ngModel)]="input.date" (ngModelChange)="onChange(date)" type="datetime-local" name="date" #date required>
+                            </div>
+
+                            <div class="btn-group">
+                                <button type="submit" class="btn btn-outline-primary"><span class="fa fa-save"></span> Guardar</button>
+                                <a (click)="cancelForm()" class="btn btn-outline-danger"><span class="fa fa-times"></span> Cancelar</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
