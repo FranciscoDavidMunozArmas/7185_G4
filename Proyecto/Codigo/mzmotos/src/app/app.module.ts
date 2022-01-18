@@ -35,6 +35,7 @@ import { ClientSelectionComponent } from './components/client-selection/client-s
 import { ProductItemComponent } from './components/product-item/product-item.component';
 import { OrderContainerComponent } from './components/order-container/order-container.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
+import { ClientComponent } from './pages/subpages/client/client.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { OrderItemComponent } from './components/order-item/order-item.component
     ClientSelectionComponent,
     ProductItemComponent,
     OrderContainerComponent,
-    OrderItemComponent
+    OrderItemComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,
