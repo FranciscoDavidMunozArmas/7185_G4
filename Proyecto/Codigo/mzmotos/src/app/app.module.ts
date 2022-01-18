@@ -40,6 +40,7 @@ import { UserComponent } from './pages/subpages/user/user.component';
 import { ManagerReportInventoriesComponent } from './pages/subpages/manager-report-inventories/manager-report-inventories.component';
 import { ManagerReportSalesComponent } from './pages/subpages/manager-report-sales/manager-report-sales.component';
 import { CardDataComponent } from './components/card-data/card-data.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { CardDataComponent } from './components/card-data/card-data.component';
     UserComponent,
     ManagerReportInventoriesComponent,
     ManagerReportSalesComponent,
-    CardDataComponent
+    CardDataComponent,
+    UserFormComponent
   ],
   imports: [
     BrowserModule,

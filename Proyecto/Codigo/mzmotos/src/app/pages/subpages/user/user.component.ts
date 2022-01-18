@@ -38,12 +38,10 @@ export class UserComponent implements OnInit {
           return item;
         }));
       });
-      console.log(this.users);
   }
 
   selectedUser(user: any) {
     this.selected = user;
-    console.log(user);
   }
 
   unseletedUser() {

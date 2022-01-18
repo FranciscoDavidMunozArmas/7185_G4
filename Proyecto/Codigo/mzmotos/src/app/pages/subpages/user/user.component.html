@@ -1,4 +1,7 @@
 <div class="d-flex justify-content-center w-full pt-4 mx-auto h-full">
+    <div class="position-fixed bottom right">
+        <app-float-button></app-float-button>
+    </div>
     <div class="row w-full h-full">
         <div class="container col-md w-full">
             <input type="text" placeholder="Seach" name="" class="form-control">
@@ -20,19 +23,24 @@
             </div>
         </div>
     </div>
+</div>
 
-    <ng-template #userData>
-        <div class="container h-full relative" style="display: flex;justify-content: center;align-items: center;vertical-align: center;height: 100%;">
-            <div class="absolute top right">
-                <button class="btn btn-borderless" (click)="unseletedUser()">
-                    <span class="fas fa-times"></span>
-                </button>
-            </div>
-            <div>
-                <h5>Employee</h5>
-                <p>{{ selected.name }} {{ selected.surname }}</p>
-                <h6>Role</h6>
-                <p>{{ selected.role }}</p>
-            </div>
+<ng-template #userData>
+    <div class="container h-full relative" style="display: flex;justify-content: center;align-items: center;vertical-align: center;height: 100%;">
+        <div class="absolute top right">
+            <button class="btn btn-borderless" (click)="unseletedUser()">
+                <span class="fas fa-times"></span>
+            </button>
         </div>
-    </ng-template>
+        <div>
+            <h5>Employee</h5>
+            <p>{{ selected.name }} {{ selected.surname }}</p>
+            <h6>Role</h6>
+            <p>{{ selected.role }}</p>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #userModal>
+
+</ng-template>
