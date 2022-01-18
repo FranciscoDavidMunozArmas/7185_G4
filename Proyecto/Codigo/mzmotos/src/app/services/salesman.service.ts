@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CONSTANTS } from 'src/lib/constants';
-import { Salesman } from '../models/Salesman';
+import { Salesman, salesmanConverter } from '../models/Salesman';
+import { User, userConverter } from '../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class SalesmanService {
     return this.http.get<any[]>(`${CONSTANTS.API_URL}/salesmen`);
   }
 
-  postSalesman(salesman: Salesman) {
-    return this.http.post(`${CONSTANTS.API_URL}/salesmen`, salesman);
+  postSalesman(user: User, salesman: Salesman) {
+    return this.http.post(`${CONSTANTS.API_URL}/salesmen`, {...salesmanConverter.toJSON(salesman), ...userConverter.toJSON(user)});
   }
 
   deleteSalesmen() { 

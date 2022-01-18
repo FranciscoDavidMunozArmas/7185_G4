@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 
 //Components
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -80,7 +82,9 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     FontAwesomeModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     AuthGuard,

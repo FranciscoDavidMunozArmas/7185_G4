@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CONSTANTS } from 'src/lib/constants';
+import { User, userConverter } from '../models/User';
 import { Warehouse, warehouseConverter } from '../models/Warehouser';
 
 @Injectable({
@@ -14,8 +15,8 @@ export class WarehouseService {
     return this.http.get(`${CONSTANTS.API_URL}/warehouses`);
   }
 
-  postWarehouse(warehouse: Warehouse) {
-    return this.http.post(`${CONSTANTS.API_URL}/warehouses`, warehouseConverter.toJSON(warehouse));
+  postWarehouse(user: User, warehouse: Warehouse) {
+    return this.http.post(`${CONSTANTS.API_URL}/warehouses`, {...warehouseConverter.toJSON(warehouse), ...userConverter.toJSON(user)});
   }
 
   deleteWarehouses() {

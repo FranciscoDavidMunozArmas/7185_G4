@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center w-full pt-4 mx-auto h-full">
-    <div class="position-fixed bottom right">
-        <app-float-button></app-float-button>
+    <div class="position-fixed bottom right" style="z-index: 100;">
+        <app-float-button (eventFunction)="showUserForm()"></app-float-button>
     </div>
     <div class="row w-full h-full">
         <div class="container col-md w-full">
@@ -9,15 +9,13 @@
                 <div *ngFor="let data of users">
                     <app-card-data [data]="data" (handleHover)="selectedUser($event)"></app-card-data>
                 </div>
-                <!-- <div *ngFor="let data of salesman">
-                    <app-card-data [data]="data" (handleHover)="selectedUser($event)"></app-card-data>
-                </div> -->
             </div>
         </div>
         <div class="col-md h-full">
             <div *ngIf="selected === null; else userData">
                 <div class="d-flex justify-content-center align-items-center flex-column">
-                    <div class="spinner-border" role="status"></div>
+                    <!-- <div class="spinner-border" role="status"></div> -->
+                    <span class="fas fa-info"></span>
                     <span>Seleccione uno...</span>
                 </div>
             </div>
@@ -41,6 +39,6 @@
     </div>
 </ng-template>
 
-<ng-template #userModal>
-
+<ng-template #userForm let-modal>
+    <app-user-form (onSubmitEvent)="updateDate($event)"></app-user-form>
 </ng-template>

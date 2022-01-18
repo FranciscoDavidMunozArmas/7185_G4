@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Salesman } from 'src/app/models/Salesman';
 import { Warehouse } from 'src/app/models/Warehouser';
 import { SalesmanService } from 'src/app/services/salesman.service';
@@ -11,11 +12,14 @@ import { WarehouseService } from 'src/app/services/warehouse.service';
 })
 export class UserComponent implements OnInit {
 
+  @ViewChild("userForm") userForm: ElementRef;
+
   users: any[] = [];
   selected: any = null;
 
-
-  constructor(private salesmanService: SalesmanService,
+  constructor(
+    private modalService: NgbModal,
+    private salesmanService: SalesmanService,
     private warehouseService: WarehouseService) { }
 
   ngOnInit(): void {
@@ -40,11 +44,28 @@ export class UserComponent implements OnInit {
       });
   }
 
+  updateDate(data: any) {
+    this.users.push(data);
+    this.modalClose();
+  }
+
   selectedUser(user: any) {
     this.selected = user;
   }
 
   unseletedUser() {
     this.selected = null;
+  }
+
+  showUserForm() {
+    this.triggerModal(this.userForm);
+  }
+
+  triggerModal(content: any) {
+    this.modalService.open(content).result;
+  }
+
+  modalClose() {
+    this.modalService.dismissAll();
   }
 }
