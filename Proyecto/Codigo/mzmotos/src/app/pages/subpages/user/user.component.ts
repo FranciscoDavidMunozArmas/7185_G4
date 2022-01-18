@@ -45,4 +45,8 @@ export class UserComponent implements OnInit {
     this.selected = user;
     console.log(user);
   }
+
+  unseletedUser() {
+    this.selected = null;
+  }
 }
