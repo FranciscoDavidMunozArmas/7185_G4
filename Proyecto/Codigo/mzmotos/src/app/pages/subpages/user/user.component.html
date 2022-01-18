@@ -1,1 +1,20 @@
-<p>user works!</p>
+<div class="d-flex justify-content-center w-full pt-4 mx-auto">
+    <div class="row w-full">
+        <div class="col-md w-full">
+            <input type="text" placeholder="Seach" name="" class="form-control">
+            <div class="h-full scroll-y-auto mt-2" style="max-height: 650px;">
+                <div *ngFor="let data of warehouses">
+                    <div>sample</div>
+                    <div>Warehouse</div>
+                </div>
+                <div *ngFor="let data of salesman">
+                    <div>sample</div>
+                    <div>Salesman</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md">
+            Right
+        </div>
+    </div>
+</div>

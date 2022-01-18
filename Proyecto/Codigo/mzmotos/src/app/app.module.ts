@@ -39,6 +39,7 @@ import { ClientComponent } from './pages/subpages/client/client.component';
 import { UserComponent } from './pages/subpages/user/user.component';
 import { ManagerReportInventoriesComponent } from './pages/subpages/manager-report-inventories/manager-report-inventories.component';
 import { ManagerReportSalesComponent } from './pages/subpages/manager-report-sales/manager-report-sales.component';
+import { CardDataComponent } from './components/card-data/card-data.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { ManagerReportSalesComponent } from './pages/subpages/manager-report-sal
     ClientComponent,
     UserComponent,
     ManagerReportInventoriesComponent,
-    ManagerReportSalesComponent
+    ManagerReportSalesComponent,
+    CardDataComponent
   ],
   imports: [
     BrowserModule,
