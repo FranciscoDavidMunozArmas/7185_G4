@@ -37,6 +37,7 @@ import { OrderContainerComponent } from './components/order-container/order-cont
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { ClientComponent } from './pages/subpages/client/client.component';
 import { UserComponent } from './pages/subpages/user/user.component';
+import { ManagerReportInventoriesComponent } from './pages/subpages/manager-report-inventories/manager-report-inventories.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { UserComponent } from './pages/subpages/user/user.component';
     OrderContainerComponent,
     OrderItemComponent,
     ClientComponent,
-    UserComponent
+    UserComponent,
+    ManagerReportInventoriesComponent
   ],
   imports: [
     BrowserModule,
