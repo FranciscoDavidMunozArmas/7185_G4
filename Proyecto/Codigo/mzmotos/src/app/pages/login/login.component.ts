@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit {
   }
 
   onChange(value: any) {
-    console.log();
     if(value.type === 'checkbox') {
       this.input = { ... this.input, [value.name]: value.checked };
     } else {
@@ -40,8 +39,9 @@ export class LoginComponent implements OnInit {
   }
 
   submitUser(loginForm: NgForm) {
-    this.userService.sigin(loginForm.value.username, loginForm.value.password)
+    this.userService.signin(loginForm.value.username, loginForm.value.password)
       .subscribe((res: any) => {
+        console.log(res);
         this.authService.signin(res, this.input.keepLog);
         const token = decode(res);
         this.router.navigate([`/${token.role}`]);
