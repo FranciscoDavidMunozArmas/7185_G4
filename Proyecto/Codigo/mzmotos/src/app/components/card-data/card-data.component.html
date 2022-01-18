@@ -1,1 +1,11 @@
-<p>card-data works!</p>
+<div class="card my-4" style="height: 75px;">
+    <div class="d-flex align-items-center relative h-full" (click)="clickSelect()" (mouseenter)="hoverSelect()" (mouseleave)="hoverSelect()">
+        <h4 class="mx-2">{{ data.name }} {{ data.surname }}</h4>
+        <div class="absolute bottom right">
+            <div class="d-flex flex-row">
+                <button class="btn btn-agree btn-borderless" style="color: green;">Edit</button>
+                <button class="btn btn-agree btn-borderless" style="color: red;">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>

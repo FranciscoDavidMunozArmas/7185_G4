@@ -1,20 +1,33 @@
-<div class="d-flex justify-content-center w-full pt-4 mx-auto">
-    <div class="row w-full">
-        <div class="col-md w-full">
+<div class="d-flex justify-content-center w-full pt-4 mx-auto h-full">
+    <div class="row w-full h-full">
+        <div class="container col-md w-full">
             <input type="text" placeholder="Seach" name="" class="form-control">
-            <div class="h-full scroll-y-auto mt-2" style="max-height: 650px;">
-                <div *ngFor="let data of warehouses">
-                    <div>sample</div>
-                    <div>Warehouse</div>
+            <div class="h-full scroll-y-auto mt-2 px-2" style="max-height: 650px;">
+                <div *ngFor="let data of users">
+                    <app-card-data [data]="data" (handleHover)="selectedUser($event)"></app-card-data>
                 </div>
-                <div *ngFor="let data of salesman">
-                    <div>sample</div>
-                    <div>Salesman</div>
+                <!-- <div *ngFor="let data of salesman">
+                    <app-card-data [data]="data" (handleHover)="selectedUser($event)"></app-card-data>
+                </div> -->
+            </div>
+        </div>
+        <div class="col-md h-full">
+            <div *ngIf="selected === null; else userData">
+                <div class="d-flex justify-content-center align-items-center flex-column">
+                    <div class="spinner-border" role="status"></div>
+                    <span>Seleccione uno...</span>
                 </div>
             </div>
         </div>
-        <div class="col-md">
-            Right
-        </div>
     </div>
-</div>
+
+    <ng-template #userData>
+        <div class="container h-full" style="display: flex;justify-content: center;align-items: center;vertical-align: center;height: 100%;">
+            <div>
+                <h5>Employee</h5>
+                <p>{{ selected.name }} {{ selected.surname }}</p>
+                <h6>Role</h6>
+                <p>{{ selected.role }}</p>
+            </div>
+        </div>
+    </ng-template>

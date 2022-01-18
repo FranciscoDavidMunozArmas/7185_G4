@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-card-data',
@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CardDataComponent implements OnInit {
 
+  @Input() data: any;
+  @Output() handleClick = new EventEmitter<any>();
+  @Output() handleHover = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  hoverSelect() {
+    this.handleHover.emit(this.data);
+  }
+
+  clickSelect() {
+    this.handleClick.emit(this.data);
   }
 
 }

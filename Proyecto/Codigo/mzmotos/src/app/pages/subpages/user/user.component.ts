@@ -11,8 +11,8 @@ import { WarehouseService } from 'src/app/services/warehouse.service';
 })
 export class UserComponent implements OnInit {
 
-  warehouses: Warehouse[] = [];
-  salesman: Salesman[] = [];
+  users: any[] = [];
+  selected: any = null;
 
 
   constructor(private salesmanService: SalesmanService,
@@ -24,15 +24,25 @@ export class UserComponent implements OnInit {
 
   getUsers() {
     this.warehouseService.getWarehouses().subscribe(
-      (data: Warehouse[]) => {
-        this.warehouses = data;
+      (data: any[]) => {
+        this.users = this.users.concat(data.map(item => {
+          item.role = "warehouse"
+          return item;
+        }));
       }
     );
     this.salesmanService.getSalesmen().subscribe(
-      (data: Salesman[]) => {
-        this.salesman = data;
-      }
-    );
+      (data: any[]) => {
+        this.users = this.users.concat(data.map(item => {
+          item.role = "salesman"
+          return item;
+        }));
+      });
+      console.log(this.users);
   }
 
+  selectedUser(user: any) {
+    this.selected = user;
+    console.log(user);
+  }
 }
