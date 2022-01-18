@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
   submitUser(loginForm: NgForm) {
     this.userService.signin(loginForm.value.username, loginForm.value.password)
       .subscribe((res: any) => {
-        console.log(res);
         this.authService.signin(res, this.input.keepLog);
         const token = decode(res);
         this.router.navigate([`/${token.role}`]);
