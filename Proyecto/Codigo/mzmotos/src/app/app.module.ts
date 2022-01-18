@@ -38,6 +38,7 @@ import { OrderItemComponent } from './components/order-item/order-item.component
 import { ClientComponent } from './pages/subpages/client/client.component';
 import { UserComponent } from './pages/subpages/user/user.component';
 import { ManagerReportInventoriesComponent } from './pages/subpages/manager-report-inventories/manager-report-inventories.component';
+import { ManagerReportSalesComponent } from './pages/subpages/manager-report-sales/manager-report-sales.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { ManagerReportInventoriesComponent } from './pages/subpages/manager-repo
     OrderItemComponent,
     ClientComponent,
     UserComponent,
-    ManagerReportInventoriesComponent
+    ManagerReportInventoriesComponent,
+    ManagerReportSalesComponent
   ],
   imports: [
     BrowserModule,
