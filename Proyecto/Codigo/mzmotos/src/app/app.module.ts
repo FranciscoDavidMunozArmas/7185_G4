@@ -36,6 +36,7 @@ import { ProductItemComponent } from './components/product-item/product-item.com
 import { OrderContainerComponent } from './components/order-container/order-container.component';
 import { OrderItemComponent } from './components/order-item/order-item.component';
 import { ClientComponent } from './pages/subpages/client/client.component';
+import { UserComponent } from './pages/subpages/user/user.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { ClientComponent } from './pages/subpages/client/client.component';
     ProductItemComponent,
     OrderContainerComponent,
     OrderItemComponent,
-    ClientComponent
+    ClientComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
