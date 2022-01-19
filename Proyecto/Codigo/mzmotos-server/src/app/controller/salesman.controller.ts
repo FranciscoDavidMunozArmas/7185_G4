@@ -100,7 +100,7 @@ export const updateSalesman = async (req: Request, res: Response) => {
 export const deleteSalesmanByID = async (req: Request, res: Response) => {
     try {
         const { id } = req.params;
-        const mongoData = await salesmanSchema.findById(id);
+        const mongoData = await salesmanSchema.findById({ _id: id });
         const salesman = salesmanConverter.convertJSON(mongoData);
         const data = await deleteUser(salesman.userid);
         if (data) {

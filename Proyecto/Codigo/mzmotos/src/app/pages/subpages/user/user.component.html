@@ -7,7 +7,7 @@
             <input type="text" placeholder="Seach" name="" class="form-control">
             <div class="h-full scroll-y-auto mt-2 px-2" style="max-height: 650px;">
                 <div *ngFor="let data of users">
-                    <app-card-data [data]="data" (handleHover)="selectedUser($event)"></app-card-data>
+                    <app-card-data [data]="data" (handleHover)="selectedUser($event)" (handleDelete)="onDelete($event)" (handleEdit)="onEdit($event)"></app-card-data>
                 </div>
             </div>
         </div>
@@ -40,5 +40,5 @@
 </ng-template>
 
 <ng-template #userForm let-modal>
-    <app-user-form (onSubmitEvent)="updateDate($event)"></app-user-form>
+    <app-user-form (onSubmitEvent)="submitData($event)" [user]="editable"></app-user-form>
 </ng-template>

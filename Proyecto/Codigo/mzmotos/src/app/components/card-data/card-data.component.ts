@@ -10,6 +10,8 @@ export class CardDataComponent implements OnInit {
   @Input() data: any;
   @Output() handleClick = new EventEmitter<any>();
   @Output() handleHover = new EventEmitter<any>();
+  @Output() handleDelete = new EventEmitter<any>();
+  @Output() handleEdit = new EventEmitter<any>();
 
   constructor() { }
 
@@ -18,6 +20,14 @@ export class CardDataComponent implements OnInit {
 
   hoverSelect() {
     this.handleHover.emit(this.data);
+  }
+
+  onClickDelete() {
+    this.handleDelete.emit(this.data);
+  }
+
+  onClickEdit() {
+    this.handleEdit.emit(this.data);
   }
 
   clickSelect() {

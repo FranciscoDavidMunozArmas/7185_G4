@@ -16,6 +16,7 @@ export class UserComponent implements OnInit {
 
   users: any[] = [];
   selected: any = null;
+  editable: any = null;
 
   constructor(
     private modalService: NgbModal,
@@ -44,9 +45,46 @@ export class UserComponent implements OnInit {
       });
   }
 
-  updateDate(data: any) {
-    this.users.push(data);
+  submitData(data: any) {
+    console.log(data);
+    if (!!this.editable) {
+      this.editData(data);
+    } else {
+      this.users.push(data);
+    }
     this.modalClose();
+  }
+
+  editData(data: any) {
+    this.users = this.users.map(item => {
+      if (item._id === this.editable._id) {
+        return data;
+      }
+      return item;
+    });
+    this.modalClose();
+  }
+
+  onDelete(user: any) {
+    if (user.role === "warehouse") {
+      this.warehouseService.deleteWarehouseByID(user._id).subscribe(
+        (data: any) => {
+          this.users = this.users.filter(item => item._id !== user._id);
+        }
+      );
+    } else {
+      this.salesmanService.deleteSalesmanByID(user._id).subscribe(
+        (data: any) => {
+          this.users = this.users.filter(item => item._id !== user._id);
+        }
+      );
+    }
+    this.unseletedUser();
+  }
+
+  onEdit(user: any) {
+    this.editable = user;
+    this.showUserForm();
   }
 
   selectedUser(user: any) {

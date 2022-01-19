@@ -43,6 +43,14 @@ export class UserFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.onGenerate();
+    if (this.user) {
+      this.input.role = this.user.role;
+      this.input.name = this.user.name;
+      this.input.surname = this.user.surname;
+      this.input.email = this.user.email;
+      this.input.phone = this.user.phone;
+      this.input.address = this.user.address;
+    }
   }
 
   onGenerate() {
@@ -54,26 +62,81 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmit(userForm: NgForm) {
-    if(!this.checkForm(userForm.value)) {
+    if (!this.checkCreateForm(userForm.value) && !this.user) {
+      this.toast.error("Complete todos los campos", 'Error', {
+        timeOut: 1500,
+      });
+      return;
+    } else       if (!this.checkEditForm(userForm.value)) {
       this.toast.error("Complete todos los campos", 'Error', {
         timeOut: 1500,
       });
       return;
     }
+
+    if(!!this.user) {
+      this.onEditData(userForm.value);
+    } else {
+      this.onCreateData(userForm.value);
+    }
+  }
+
+  checkCreateForm(data: any) {
+    return !!data.name && !!data.surname && !!data.email && !!data.phone && !!data.address && !!data.username && !!data.password
+  }
+
+  checkEditForm(data: any) {
+    return !!data.name && !!data.surname && !!data.email && !!data.phone && !!data.address
+  }
+
+  onEditData(data: any) {
+    const newData: any = {
+      name: data.name,
+      surname: data.surname,
+      email: data.email,
+      phone: data.phone,
+      address: data.address,
+    }
+    switch (this.input.role) {
+      case "salesman":
+        this.salesmanService.putSalesman(this.user._id, newData).subscribe(
+          (data: any) => {
+            this.onSubmitEvent.emit(data);
+          }
+        );
+        break;
+      case "warehouse":
+        this.warehouseService.putWarehouseByID(this.user._id, newData).subscribe(
+          (data: any) => {
+            this.onSubmitEvent.emit(data);
+          }
+        );
+        break;
+      case "admin":
+        this.managerService.putManagerByID(this.user._id, newData).subscribe(
+          (data: any) => {
+            this.onSubmitEvent.emit(data);
+          }
+        );
+        break;
+    }
+  }
+
+  onCreateData(data: any) {
     const user: User = {
-      username: userForm.value.username,
-      password: userForm.value.password,
-      role: userForm.value.role,
+      username: data.username,
+      password: data.password,
+      role: data.role,
     };
-    switch (userForm.value.role) {
+    switch (data.role) {
       case "salesman":
         const salesman: Salesman = {
           userid: "",
-          name: userForm.value.name,
-          surname: userForm.value.surname,
-          email: userForm.value.email,
-          phone: userForm.value.phone,
-          address: userForm.value.address,
+          name: data.name,
+          surname: data.surname,
+          email: data.email,
+          phone: data.phone,
+          address: data.address,
           appointments: [],
         }
         this.salesmanService.postSalesman(user, salesman).subscribe(
@@ -86,11 +149,11 @@ export class UserFormComponent implements OnInit {
       case "warehouse":
         const warehouse: Warehouse = {
           userid: "",
-          name: userForm.value.name,
-          surname: userForm.value.surname,
-          email: userForm.value.email,
-          phone: userForm.value.phone,
-          address: userForm.value.address
+          name: data.name,
+          surname: data.surname,
+          email: data.email,
+          phone: data.phone,
+          address: data.address
         }
         this.warehouseService.postWarehouse(user, warehouse).subscribe(
           (data: any) => {
@@ -102,11 +165,11 @@ export class UserFormComponent implements OnInit {
       case "admin":
         const admin: Manager = {
           userid: "",
-          name: userForm.value.name,
-          surname: userForm.value.surname,
-          email: userForm.value.email,
-          phone: userForm.value.phone,
-          address: userForm.value.address
+          name: data.name,
+          surname: data.surname,
+          email: data.email,
+          phone: data.phone,
+          address: data.address
         }
         this.managerService.postManager(user, admin).subscribe(
           (data: any) => {
@@ -116,9 +179,5 @@ export class UserFormComponent implements OnInit {
         );
         break;
     }
-  }
-
-  checkForm(data: any) {
-    return !!data.name && !!data.surname && !!data.email && !!data.phone && !!data.address && !!data.username && !!data.password
   }
 }
