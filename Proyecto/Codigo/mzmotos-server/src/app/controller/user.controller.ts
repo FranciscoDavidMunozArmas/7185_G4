@@ -15,7 +15,7 @@ export const createUser = async (username: string, password: string, role: strin
             username,
             password: bcryptjs.hashSync(password, saltRounds),
             role
-        })        
+        })
         const mongoData = await userSchema.create(data);
         const user = userConverter.convertJSON(mongoData);
         return user._id;
@@ -31,7 +31,7 @@ export const updateUser = async (_id: string, username: string, password: string
             username,
             password: bcryptjs.hashSync(password, saltRounds),
             role
-        }      
+        }
         const mongoData = await userSchema.findByIdAndUpdate(_id, data, { new: true });
         const user = userConverter.convertJSON(mongoData);
         return user._id;
@@ -99,26 +99,26 @@ export const signin = async (req: Request, res: Response) => {
         const { username, password } = req.body;
         let result: boolean = false;
         let token: any = {};
-        const user = await userSchema.findOne({username});
+        const user = await userSchema.findOne({ username });
         if (user) {
             result = bcryptjs.compareSync(password, user?.password as string);
-            if(result){
-                if(user.role === "admin"){
+            if (result) {
+                if (user.role === "admin") {
                     const data = await managerSchema.findOne({ userid: user._id });
-                    if(data){
-                        token = {token: user._id, user:data._id, role: user.role};
+                    if (data) {
+                        token = { token: user._id, user: data._id, role: user.role };
                         return res.status(200).json(tokenize(token));
                     }
-                } else if(user.role === "salesman"){
+                } else if (user.role === "salesman") {
                     const data = await salesmanSchema.findOne({ userid: user._id });
-                    if(data){
-                        token = {token: user._id, user:data._id, role: user.role};
+                    if (data) {
+                        token = { token: user._id, user: data._id, role: user.role };
                         return res.status(200).json(tokenize(token));
                     }
-                } else if (user.role === "warehouse"){
+                } else if (user.role === "warehouse") {
                     const data = await warehouseSchema.findOne({ userid: user._id });
-                    if(data){
-                        token = {token: user._id, user:data._id, role: user.role};
+                    if (data) {
+                        token = { token: user._id, user: data._id, role: user.role };
                         return res.status(200).json(tokenize(token));
                     }
                 }
@@ -137,17 +137,36 @@ export const updatePassword = async (req: Request, res: Response) => {
         const mongoData = await userSchema.findOne({ username: username });
         if (mongoData) {
             if (mongoData._id) {
-                    const userID = await updateUser(mongoData._id, data.username, data.password, mongoData.role);
-                    if (userID) {
-                        return res.status(200).json({ message: "Password has been updated" });
-                    }
+                const userID = await updateUser(mongoData._id, data.username, data.password, mongoData.role);
+                if (userID) {
+                    return res.status(200).json({ message: "Password has been updated" });
                 }
             }
-            return res.status(200).json({ message: "Item not found" });
-        } catch (error: any) {
-            return res.status(500).json({
-                message: "Error",
-                error: error.message
-            });
         }
+        return res.status(200).json({ message: "Item not found" });
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
     }
+}
+
+export const getUserByUsername = async (req: Request, res: Response) => {
+    try {
+        const { username } = req.params
+        const mongoData = await userSchema.findOne({ username: username });
+        if (mongoData) {
+            if (mongoData._id) {
+                const user = userConverter.convertJSON(mongoData);
+                return res.status(200).json(user);
+            }
+        }
+        return res.status(200).json({ message: "Item not found" });
+    } catch (error: any) {
+        return res.status(500).json({
+            message: "Error",
+            error: error.message
+        });
+    }
+}

@@ -344,6 +344,25 @@ a:hover {
     width: 100%;
 }
 
+span.circle {
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    margin: 0.25rem;
+}
+
+span.step {
+    background-color: var(--text-base-color);
+    opacity: 0.5;
+    transition: all .3s ease;
+}
+
+span.step.active {
+    background-color: var(--text-base-color);
+    opacity: 1;
+    transition: all .3s ease;
+}
+
 
 /*Animations*/
 

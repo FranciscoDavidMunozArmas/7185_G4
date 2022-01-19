@@ -12,7 +12,10 @@ router.route("/signin")
     .post(UserController.signin);
 
 router.route("/password/:username")
-    .post(UserController.updatePassword);
+    .put(UserController.updatePassword);
+
+router.route("/username/:username")
+    .get(UserController.getUserByUsername);
 
 router.route("/user/:id")
     .get(authUser, UserController.getUserById)
