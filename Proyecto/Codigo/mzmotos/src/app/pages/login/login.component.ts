@@ -70,7 +70,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitForgetPassword(forgetPasswordForm: NgForm) {
-    console.log(this.forgetPasswordInput);
     if (this.stepCounter === 1) {
       this.forgetPasswordInput.username = forgetPasswordForm.value.username;
       this.checkUserExist(this.forgetPasswordInput.username);
