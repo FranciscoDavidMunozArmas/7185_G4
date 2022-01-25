@@ -52,10 +52,21 @@ export class LoginComponent implements OnInit {
   submitUser(loginForm: NgForm) {
     this.userService.signin(loginForm.value.username, loginForm.value.password)
       .subscribe((res: any) => {
-        this.authService.signin(res, this.input.keepLog);
-        const token = decode(res);
-        this.router.navigate([`/${token.role}`]);
-      })
+        if (res) {
+          this.authService.signin(res, this.input.keepLog);
+          const token = decode(res);
+          this.router.navigate([`/${token.role}`]);
+        } else {
+          this.toast.error("Usuario o contraseña incorrecta", "Invalido", {
+            timeOut: 3000,
+          });
+        }
+      }, (error: any) => {
+        this.toast.error("Login failed", "Error", {
+          timeOut: 3000,
+        });
+        console.log(error);
+      });
   }
 
   increaseStep() {
