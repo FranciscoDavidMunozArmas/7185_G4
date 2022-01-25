@@ -46,7 +46,6 @@ export class UserComponent implements OnInit {
   }
 
   submitData(data: any) {
-    console.log(data);
     if (!!this.editable) {
       this.editData(data);
     } else {
@@ -62,7 +61,6 @@ export class UserComponent implements OnInit {
       }
       return item;
     });
-    this.modalClose();
   }
 
   onDelete(user: any) {
@@ -100,7 +98,8 @@ export class UserComponent implements OnInit {
   }
 
   triggerModal(content: any) {
-    this.modalService.open(content).result;
+    this.modalService.open(content).result
+      .then(() => null, () => { this.editable = null });
   }
 
   modalClose() {
