@@ -1,8 +1,8 @@
 export class Client {
     _id?: string;
-    RUC:string;
+    RUC: string;
     name: string;
-    address:string;
+    address: string;
     city: string;
 
     constructor(RUC:string, name: string, address:string, city: string, id?: string) {
