@@ -46,6 +46,7 @@ export class UserFormComponent implements OnInit {
     this.onGenerate();
     if (this.user) {
       this.input.role = this.user.role;
+      this.input.ci = this.user.ci;
       this.input.name = this.user.name;
       this.input.surname = this.user.surname;
       this.input.email = this.user.email;
@@ -92,6 +93,7 @@ export class UserFormComponent implements OnInit {
 
   onEditData(data: any) {
     const newData: any = {
+      ci: data.ci,
       name: data.name,
       surname: data.surname,
       email: data.email,
@@ -102,6 +104,7 @@ export class UserFormComponent implements OnInit {
       case "salesman":
         this.salesmanService.putSalesman(this.user._id, newData).subscribe(
           (data: any) => {
+            data.role = "salesman";
             this.onSubmitEvent.emit(data);
           }
         );
@@ -109,6 +112,7 @@ export class UserFormComponent implements OnInit {
       case "warehouse":
         this.warehouseService.putWarehouseByID(this.user._id, newData).subscribe(
           (data: any) => {
+            data.role = "warehouse";
             this.onSubmitEvent.emit(data);
           }
         );
@@ -116,6 +120,7 @@ export class UserFormComponent implements OnInit {
       case "admin":
         this.managerService.putManagerByID(this.user._id, newData).subscribe(
           (data: any) => {
+            data.role = "admin";
             this.onSubmitEvent.emit(data);
           }
         );
