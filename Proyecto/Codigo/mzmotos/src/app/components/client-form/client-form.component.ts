@@ -34,7 +34,8 @@ export class ClientFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.client) {
       this.input.RUC = this.client.RUC;
-      this.input.name = this.client.name + " " + this.client.surname;
+      this.input.name = this.client.name;
+      this.input.surname = this.client.surname;
       this.input.address = this.client.address;
       this.input.city = this.client.city;
       this.input.id = this.client.id;
@@ -75,7 +76,8 @@ export class ClientFormComponent implements OnInit {
 
   onEditData(data: any) {
     const newData: any = {
-      name: data.name + " " + data.surname,
+      name: data.name,
+      surname: data.surname,
       email: data.email,
       phone: data.phone,
       address: data.address,
@@ -94,6 +96,8 @@ export class ClientFormComponent implements OnInit {
       RUC: data.RUC,
       name: data.name,
       surname: data.surname,
+      email: data.email,
+      phone: data.phone,
       address: data.address,
       city: data.city,
       _id: data.id

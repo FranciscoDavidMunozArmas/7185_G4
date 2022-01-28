@@ -29,6 +29,8 @@ export class AppointmentFormComponent implements OnInit {
     _id: "",
     name: "",
     surname: "",
+    email: "",
+    phone: "",
     RUC: "",
     address: "",
     city: "",
@@ -38,11 +40,11 @@ export class AppointmentFormComponent implements OnInit {
   ngOnInit(): void {
     this.getClients();
     this.input.date = moment(new Date).format("YYYY-MM-DDTHH:MM");
-    if(this.appointment) {
+    if (this.appointment) {
       this.selectedClient = this.appointment.client;
       this.input.date = moment(this.appointment.date).format("YYYY-MM-DDTHH:MM");
     }
-    if(this.date) {
+    if (this.date) {
       this.input.date = moment(this.date).format("YYYY-MM-DDTHH:MM");
     }
   }
@@ -52,18 +54,18 @@ export class AppointmentFormComponent implements OnInit {
 
   getClients() {
     this.clientService.getClients()
-    .subscribe(
-      (res) => {
-        this.clients = res.map(clientConverter.fromJSON);
-        this.input.clientId = this.clients[0]._id;
-      }, (err) => console.log(err)
-    )
+      .subscribe(
+        (res) => {
+          this.clients = res.map(clientConverter.fromJSON);
+          this.input.clientId = this.clients[0]._id;
+        }, (err) => console.log(err)
+      )
   }
 
   submitForm(appointmentForm: NgForm) {
     let appointment = {};
-    if(this.selectedClient.name !== "") {
-      if(this.appointment) {
+    if (this.selectedClient.name !== "") {
+      if (this.appointment) {
         appointment = {
           client: clientConverter.toJSON(this.selectedClient),
           date: appointmentForm.value.date
