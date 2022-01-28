@@ -3,6 +3,7 @@ import { Manager } from "../interface/manager.interface";
 
 const schema = new Schema({
     userid: String,
+    ci: String,
     name: String,
     surname: String,
     address: String,

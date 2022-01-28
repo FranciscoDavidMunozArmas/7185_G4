@@ -3,6 +3,7 @@ import { Salesman } from "../interface/salesman.interface";
 
 const schema = new Schema({
     userid: String,
+    ci: String,
     name: String,
     surname: String,
     address: String,

@@ -3,6 +3,7 @@ import { Warehouse } from "../interface/warehouse.interface";
 
 const schema = new Schema({
     userid: String,
+    ci: String,
     name: String,
     surname: String,
     address: String,

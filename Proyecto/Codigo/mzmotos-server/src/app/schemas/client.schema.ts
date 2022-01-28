@@ -7,6 +7,7 @@ const schema = new Schema({
         unique: true
     },
     name: String,
+    surname: String,
     address: String,
     city: String,
 },
