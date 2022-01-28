@@ -8,6 +8,8 @@ const schema = new Schema({
     },
     name: String,
     surname: String,
+    email: String,
+    phone: String,
     address: String,
     city: String,
 },
