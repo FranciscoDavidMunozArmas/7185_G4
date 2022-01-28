@@ -36,6 +36,8 @@ export class ClientFormComponent implements OnInit {
       this.input.RUC = this.client.RUC;
       this.input.name = this.client.name;
       this.input.surname = this.client.surname;
+      this.input.email = this.client.email;
+      this.input.phone = this.client.phone;
       this.input.address = this.client.address;
       this.input.city = this.client.city;
       this.input.id = this.client.id;
