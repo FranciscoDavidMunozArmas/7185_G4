@@ -24,6 +24,7 @@ export class UserFormComponent implements OnInit {
   roles: String[] = CONSTANTS.ROLES;
 
   input = {
+    ci: "",
     username: "",
     password: "",
     role: this.roles[0],
@@ -67,14 +68,14 @@ export class UserFormComponent implements OnInit {
         timeOut: 1500,
       });
       return;
-    } else       if (!this.checkEditForm(userForm.value)) {
+    } else if (!this.checkEditForm(userForm.value)) {
       this.toast.error("Complete todos los campos", 'Error', {
         timeOut: 1500,
       });
       return;
     }
 
-    if(!!this.user) {
+    if (!!this.user) {
       this.onEditData(userForm.value);
     } else {
       this.onCreateData(userForm.value);
@@ -128,15 +129,19 @@ export class UserFormComponent implements OnInit {
       password: data.password,
       role: data.role,
     };
+    const userData = {
+      userid: "",
+      ci: data.ci,
+      name: data.name,
+      surname: data.surname,
+      email: data.email,
+      phone: data.phone,
+      address: data.address,
+    }
     switch (data.role) {
       case "salesman":
         const salesman: Salesman = {
-          userid: "",
-          name: data.name,
-          surname: data.surname,
-          email: data.email,
-          phone: data.phone,
-          address: data.address,
+          ...userData,
           appointments: [],
         }
         this.salesmanService.postSalesman(user, salesman).subscribe(
@@ -147,14 +152,7 @@ export class UserFormComponent implements OnInit {
         );
         break;
       case "warehouse":
-        const warehouse: Warehouse = {
-          userid: "",
-          name: data.name,
-          surname: data.surname,
-          email: data.email,
-          phone: data.phone,
-          address: data.address
-        }
+        const warehouse: Warehouse = userData;
         this.warehouseService.postWarehouse(user, warehouse).subscribe(
           (data: any) => {
             data.role = "warehouse";
@@ -163,14 +161,7 @@ export class UserFormComponent implements OnInit {
         );
         break;
       case "admin":
-        const admin: Manager = {
-          userid: "",
-          name: data.name,
-          surname: data.surname,
-          email: data.email,
-          phone: data.phone,
-          address: data.address
-        }
+        const admin: Manager = userData;
         this.managerService.postManager(user, admin).subscribe(
           (data: any) => {
             data.role = "admin";
