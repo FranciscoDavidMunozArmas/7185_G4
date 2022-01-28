@@ -28,6 +28,7 @@ export class AppointmentFormComponent implements OnInit {
   selectedClient: Client = {
     _id: "",
     name: "",
+    surname: "",
     RUC: "",
     address: "",
     city: "",
