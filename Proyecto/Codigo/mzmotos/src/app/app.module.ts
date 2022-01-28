@@ -43,6 +43,7 @@ import { ManagerReportInventoriesComponent } from './pages/subpages/manager-repo
 import { ManagerReportSalesComponent } from './pages/subpages/manager-report-sales/manager-report-sales.component';
 import { CardDataComponent } from './components/card-data/card-data.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
+import { ClientFormComponent } from './components/client-form/client-form.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { UserFormComponent } from './components/user-form/user-form.component';
     ManagerReportInventoriesComponent,
     ManagerReportSalesComponent,
     CardDataComponent,
-    UserFormComponent
+    UserFormComponent,
+    ClientFormComponent
   ],
   imports: [
     BrowserModule,
