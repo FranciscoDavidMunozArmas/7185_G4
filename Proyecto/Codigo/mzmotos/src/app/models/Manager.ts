@@ -1,14 +1,16 @@
 export class Manager{
     _id?: string;
     userid:string;
+    ci: string;
     name: string;
     surname: string;
     address: string;
     phone: string;
     email: string;
 
-    constructor(userid:string, name: string, surname: string, address: string, phone: string, email: string, id?: string) {
+    constructor(userid:string, ci:string, name: string, surname: string, address: string, phone: string, email: string, id?: string) {
         this.userid = userid;
+        this.ci = ci;
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -20,11 +22,12 @@ export class Manager{
 
 export const managerConverter = {
     fromJSON: (json: any): Manager => {
-        return new Manager(json.userid, json.name, json.surname, json.address, json.phone, json.email, json._id);
+        return new Manager(json.userid, json.ci, json.name, json.surname, json.address, json.phone, json.email, json._id);
     },
     toJSON: (manager: Manager): any => {
         return {
             userid: manager.userid,
+            ci: manager.ci,
             name: manager.name,
             surname: manager.surname,
             address: manager.address,

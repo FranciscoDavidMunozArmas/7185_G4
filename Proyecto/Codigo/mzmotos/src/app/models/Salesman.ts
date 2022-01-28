@@ -2,7 +2,8 @@ import { Appointment, appointmentConverter } from "./Appointment";
 
 export class Salesman {
     _id?: string;
-    userid:string;
+    userid: string;
+    ci: string;
     name: string;
     surname: string;
     address: string;
@@ -10,14 +11,15 @@ export class Salesman {
     email: string;
     appointments: Appointment[];
 
-    constructor(userid:string, name: string, surname: string, address: string, phone: string, email: string, appointments: any[], id?: string) {
+    constructor(userid: string, ci: string, name: string, surname: string, address: string, phone: string, email: string, appointments: any[], id?: string) {
         this.userid = userid;
+        this.ci = ci;
         this.name = name;
         this.surname = surname;
         this.address = address;
         this.phone = phone;
         this.email = email;
-        if(appointments){
+        if (appointments) {
             this.appointments = appointments.map(appointmentConverter.fromJSON);
         } else {
             this.appointments = [];
@@ -29,11 +31,12 @@ export class Salesman {
 
 export const salesmanConverter = {
     fromJSON: (json: any): Salesman => {
-        return new Salesman(json.userid, json.name, json.surname, json.address, json.phone, json.email, json.appointments, json._id);
+        return new Salesman(json.userid, json.ci, json.name, json.surname, json.address, json.phone, json.email, json.appointments, json._id);
     },
     toJSON: (salesman: Salesman): any => {
         return {
             userid: salesman.userid,
+            ci: salesman.ci,
             name: salesman.name,
             surname: salesman.surname,
             address: salesman.address,
