@@ -4,6 +4,7 @@ import { Appointment } from "./appointment.interface"
 export interface Salesman extends Document {
     _id?: string,
     userid:string,
+    ci: string,
     name: string,
     surname: string,
     address: string,
@@ -17,6 +18,7 @@ export const salesmanConverter = {
         return {
             _id: json._id,
             userid: json.userid,
+            ci: json.ci,
             name: json.name,
             surname: json.surname,
             address: json.address,

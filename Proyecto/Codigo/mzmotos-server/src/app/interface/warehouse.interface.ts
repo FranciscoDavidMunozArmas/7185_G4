@@ -3,6 +3,7 @@ import { Document } from "mongoose"
 export interface Warehouse extends Document {
     _id?: string,
     userid:string,
+    ci: string,
     name: string,
     surname: string,
     address: string,
@@ -15,6 +16,7 @@ export const warehouseConverter = {
         return {
             _id: json._id,
             userid: json.userid,
+            ci: json.ci,
             username: json.username,
             name: json.name,
             surname: json.surname,
