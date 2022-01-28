@@ -1,11 +1,13 @@
 import { Document } from "mongoose"
 
-export interface Client extends Document{
+export interface Client extends Document {
     _id?: string,
-    RUC:string,
+    RUC: string,
     name: string,
     surname: string,
-    address:string,
+    email: string,
+    phone: string,
+    address: string,
     city: string
 }
 
@@ -16,6 +18,8 @@ export const clientConverter = {
             RUC: json.RUC,
             name: json.name,
             surname: json.surname,
+            email: json.email,
+            phone: json.phone,
             address: json.address,
             city: json.city
         }
