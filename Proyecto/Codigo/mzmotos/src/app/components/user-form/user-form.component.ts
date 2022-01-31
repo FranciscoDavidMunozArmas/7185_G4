@@ -65,11 +65,6 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmit(userForm: NgForm) {
-    if(!IdVerificator.verify(userForm.value.ci)) {
-      this.toast.error("Cedula incorrecta", 'Error', {
-        timeOut: 1500,
-      });
-    }
     if (!this.checkCreateForm(userForm.value) && !this.user) {
       this.toast.error("Complete todos los campos", 'Error', {
         timeOut: 1500,
@@ -81,6 +76,12 @@ export class UserFormComponent implements OnInit {
       });
       return;
     }
+    if(!IdVerificator.verify(userForm.value.ci)) {
+      this.toast.error("Cedula incorrecta", 'Error', {
+        timeOut: 1500,
+      });
+      return;
+    };
 
     if (!!this.user) {
       this.onEditData(userForm.value);
