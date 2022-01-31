@@ -9,6 +9,7 @@ import { ManagerService } from 'src/app/services/manager.service';
 import { SalesmanService } from 'src/app/services/salesman.service';
 import { WarehouseService } from 'src/app/services/warehouse.service';
 import { CONSTANTS } from 'src/lib/constants';
+import { IdVerificator } from 'src/lib/idVerificator';
 import { passwordGenerator } from '../../../lib/constants';
 
 @Component({
@@ -64,6 +65,11 @@ export class UserFormComponent implements OnInit {
   }
 
   onSubmit(userForm: NgForm) {
+    if(!IdVerificator.verify(userForm.value.ci)) {
+      this.toast.error("Cedula incorrecta", 'Error', {
+        timeOut: 1500,
+      });
+    }
     if (!this.checkCreateForm(userForm.value) && !this.user) {
       this.toast.error("Complete todos los campos", 'Error', {
         timeOut: 1500,
