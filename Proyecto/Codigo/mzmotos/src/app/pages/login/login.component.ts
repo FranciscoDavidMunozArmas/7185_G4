@@ -7,6 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 import { decode } from 'src/lib/token';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
+import { BACK_BUTTON_NAME, HINT_CONFIRM_PASSWORD, HINT_PASSWORD, HINT_USERNAME, KEEP_LOG_NAME, LOGIN_BUTTON_NAME, LOGIN_NAME, NEXT_BUTTON_NAME, RESET_PASSWORD_NAME, SAVE_BUTTON_NAME, WRITE_PASSWORD_NAME, WRITE_USERNAME_NAME } from 'src/lib/strings';
 
 @Component({
   selector: 'app-login',
@@ -14,6 +15,24 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+
+  hint = {
+    username: HINT_USERNAME,
+    password: HINT_PASSWORD,
+    confirm: HINT_CONFIRM_PASSWORD,
+  }
+
+  ui = {
+    login: LOGIN_NAME,
+    forgetPassword: RESET_PASSWORD_NAME,
+    keepLogged: KEEP_LOG_NAME,
+    loginButton: LOGIN_BUTTON_NAME,
+    writeUsername: WRITE_USERNAME_NAME,
+    writePassword: WRITE_PASSWORD_NAME,
+    backButton: BACK_BUTTON_NAME,
+    nextButton: NEXT_BUTTON_NAME,
+    saveButton: SAVE_BUTTON_NAME
+  }
 
   input = {
     username: "",
