@@ -344,6 +344,11 @@ a:hover {
     width: 100%;
 }
 
+.spinner {
+    border: 3px solid var(--primary-color);
+    border-radius: 100%;
+}
+
 span.circle {
     width: 10px;
     height: 10px;

@@ -44,6 +44,7 @@ import { ManagerReportSalesComponent } from './pages/subpages/manager-report-sal
 import { CardDataComponent } from './components/card-data/card-data.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { ClientFormComponent } from './components/client-form/client-form.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { ClientFormComponent } from './components/client-form/client-form.compon
     ManagerReportSalesComponent,
     CardDataComponent,
     UserFormComponent,
-    ClientFormComponent
+    ClientFormComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
