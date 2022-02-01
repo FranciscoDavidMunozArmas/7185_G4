@@ -10,7 +10,7 @@ import { SalesmanService } from 'src/app/services/salesman.service';
 import { WarehouseService } from 'src/app/services/warehouse.service';
 import { CONSTANTS } from 'src/lib/constants';
 import { IdVerificator } from 'src/lib/idVerificator';
-import { GENERATE_PASSWORD_BUTTON_NAME, HINT_ADDRESS, HINT_CI_RUC, HINT_EMAIL, HINT_NAME, HINT_PASSWORD, HINT_PHONE, HINT_SURNAME, HINT_USERNAME, SAVE_BUTTON_NAME } from 'src/lib/strings';
+import { ERROR_MESSAGE_FILL_FIELDS, ERROR_MESSAGE_WRONG_CI, ERROR_TITLE, GENERATE_PASSWORD_BUTTON_NAME, HINT_ADDRESS, HINT_CI_RUC, HINT_EMAIL, HINT_NAME, HINT_PASSWORD, HINT_PHONE, HINT_SURNAME, HINT_USERNAME, SAVE_BUTTON_NAME } from 'src/lib/strings';
 import { passwordGenerator } from '../../../lib/constants';
 
 @Component({
@@ -83,18 +83,18 @@ export class UserFormComponent implements OnInit {
 
   onSubmit(userForm: NgForm) {
     if (!this.checkCreateForm(userForm.value) && !this.user) {
-      this.toast.error("Complete todos los campos", 'Error', {
+      this.toast.error(ERROR_MESSAGE_FILL_FIELDS, ERROR_TITLE, {
         timeOut: 1500,
       });
       return;
     } else if (!this.checkEditForm(userForm.value)) {
-      this.toast.error("Complete todos los campos", 'Error', {
+      this.toast.error(ERROR_MESSAGE_FILL_FIELDS, ERROR_TITLE, {
         timeOut: 1500,
       });
       return;
     }
     if(!IdVerificator.verify(userForm.value.ci)) {
-      this.toast.error("Cedula incorrecta", 'Error', {
+      this.toast.error(ERROR_MESSAGE_WRONG_CI, ERROR_TITLE, {
         timeOut: 1500,
       });
       return;
