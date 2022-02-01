@@ -7,7 +7,7 @@ import { UserService } from 'src/app/services/user.service';
 import { decode } from 'src/lib/token';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastrService } from 'ngx-toastr';
-import { BACK_BUTTON_NAME, HINT_CONFIRM_PASSWORD, HINT_PASSWORD, HINT_USERNAME, KEEP_LOG_NAME, LOGIN_BUTTON_NAME, LOGIN_NAME, NEXT_BUTTON_NAME, RESET_PASSWORD_NAME, SAVE_BUTTON_NAME, WRITE_PASSWORD_NAME, WRITE_USERNAME_NAME } from 'src/lib/strings';
+import { BACK_BUTTON_NAME, ERROR_MESSAGE, ERROR_MESSAGE_CONFIRM_PASSWORD, ERROR_MESSAGE_PASWORD_LENGTH, ERROR_TITLE, HINT_CONFIRM_PASSWORD, HINT_PASSWORD, HINT_USERNAME, KEEP_LOG_NAME, LOGIN_BUTTON_NAME, LOGIN_NAME, NEXT_BUTTON_NAME, RESET_PASSWORD_NAME, SAVE_BUTTON_NAME, SUCCESS_MESSAGE_MODIFY, SUCCESS_TITLE, WRITE_PASSWORD_NAME, WRITE_USERNAME_NAME } from 'src/lib/strings';
 
 @Component({
   selector: 'app-login',
@@ -80,12 +80,12 @@ export class LoginComponent implements OnInit {
           this.loading = false;
           this.router.navigate([`/${token.role}`]);
         } else {
-          this.toast.error("Usuario o contraseña incorrecta", "Invalido", {
+          this.toast.error(ERROR_MESSAGE, ERROR_TITLE, {
             timeOut: 3000,
           });
         }
       }, (error: any) => {
-        this.toast.error("Login failed", "Error", {
+        this.toast.error(ERROR_MESSAGE, ERROR_TITLE, {
           timeOut: 3000,
         });
         this.loading = false;
@@ -118,7 +118,7 @@ export class LoginComponent implements OnInit {
       }
       this.userService.updatePassword(this.forgetPasswordInput.username, this.forgetPasswordInput.newPassword)
         .subscribe((res: any) => {
-          this.toast.success("Password updated", "Success",
+          this.toast.success(SUCCESS_MESSAGE_MODIFY, SUCCESS_TITLE,
             {
               timeOut: 3000,
             });
@@ -132,7 +132,7 @@ export class LoginComponent implements OnInit {
     this.userService.getUserByUsername(username)
       .subscribe((res: any) => {
         if (!res._id) {
-          this.toast.error("User not found", "Error", {
+          this.toast.error(ERROR_MESSAGE, ERROR_TITLE, {
             timeOut: 3000,
           });
           this.stepCounter = 1;
@@ -144,13 +144,13 @@ export class LoginComponent implements OnInit {
 
   checkPassword(password: string, confirmPassword: string) {
     if (password !== confirmPassword) {
-      this.toast.error("Password don't match", "Error", {
+      this.toast.error(ERROR_MESSAGE_CONFIRM_PASSWORD, ERROR_TITLE, {
         timeOut: 3000,
       });
       return false;
     }
     if (password.length < 6) {
-      this.toast.error("Too short password", "Error", {
+      this.toast.error(ERROR_MESSAGE_PASWORD_LENGTH, ERROR_TITLE, {
         timeOut: 3000,
       });
       return false;

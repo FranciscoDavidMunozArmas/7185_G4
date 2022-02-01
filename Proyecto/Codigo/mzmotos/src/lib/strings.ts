@@ -36,6 +36,8 @@ export const WRITE_PASSWORD_NAME = "Escribe tu contraseña";
 
 export const ERROR_TITLE = "Error";
 export const ERROR_MESSAGE = "Ha ocurrido un error";
+export const ERROR_MESSAGE_CONFIRM_PASSWORD = "Las contraseñas no coinciden";
+export const ERROR_MESSAGE_PASWORD_LENGTH = "La contraseña debe tener al menos 6 caracteres";
 export const ERROR_MESSAGE_GET_DATA = "Ha ocurrido un error al obtener los datos";
 export const ERROR_MESSAGE_MODIFY = "Ha ocurrido un error al modificar";
 export const ERROR_MESSAGE_DELETE = "Ha ocurrido un error al eliminar";
