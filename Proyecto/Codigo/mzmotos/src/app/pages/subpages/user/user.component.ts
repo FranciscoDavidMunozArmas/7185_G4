@@ -4,6 +4,7 @@ import { Salesman } from 'src/app/models/Salesman';
 import { Warehouse } from 'src/app/models/Warehouser';
 import { SalesmanService } from 'src/app/services/salesman.service';
 import { WarehouseService } from 'src/app/services/warehouse.service';
+import { CI_RUC, NAME, ROLE } from 'src/lib/strings';
 
 @Component({
   selector: 'app-user',
@@ -17,6 +18,12 @@ export class UserComponent implements OnInit {
   users: any[] = [];
   selected: any = null;
   editable: any = null;
+
+  ui = {
+    name: NAME,
+    role: ROLE,
+    ci: CI_RUC,
+  }
 
   constructor(
     private modalService: NgbModal,
