@@ -31,3 +31,14 @@ export const NEXT_BUTTON_NAME = "Siguiente";
 export const BACK_BUTTON_NAME = "Atrás";
 export const WRITE_USERNAME_NAME = "Escribe tu nombre de usuario";
 export const WRITE_PASSWORD_NAME = "Escribe tu contraseña";
+
+export const ERROR_TITLE = "Error";
+export const ERROR_MESSAGE = "Ha ocurrido un error";
+export const ERROR_MESSAGE_GET_DATA = "Ha ocurrido un error al obtener los datos";
+export const ERROR_MESSAGE_MODIFY = "Ha ocurrido un error al modificar";
+export const ERROR_MESSAGE_DELETE = "Ha ocurrido un error al eliminar";
+
+export const SUCCESS_TITLE = "Éxito";
+export const SUCCESS_MESSAGE = "Operación realizada con éxito";
+export const SUCCESS_MESSAGE_MODIFY = "Modificación realizada con éxito";
+export const SUCCESS_MESSAGE_DELETE = "Eliminación realizada con éxito";
