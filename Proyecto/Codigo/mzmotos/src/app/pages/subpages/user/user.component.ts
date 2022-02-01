@@ -4,7 +4,7 @@ import { Salesman } from 'src/app/models/Salesman';
 import { Warehouse } from 'src/app/models/Warehouser';
 import { SalesmanService } from 'src/app/services/salesman.service';
 import { WarehouseService } from 'src/app/services/warehouse.service';
-import { CI_RUC, NAME, ROLE } from 'src/lib/strings';
+import { CI_RUC, HINT_SEARCH, NAME, ROLE, SELECT_ONE_NAME } from 'src/lib/strings';
 
 @Component({
   selector: 'app-user',
@@ -23,6 +23,8 @@ export class UserComponent implements OnInit {
     name: NAME,
     role: ROLE,
     ci: CI_RUC,
+    search: HINT_SEARCH,
+    selectOne: SELECT_ONE_NAME
   }
 
   constructor(

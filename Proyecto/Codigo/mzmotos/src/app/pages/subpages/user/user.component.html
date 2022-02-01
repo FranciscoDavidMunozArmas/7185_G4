@@ -4,7 +4,7 @@
     </div>
     <div class="row w-full h-full">
         <div class="container col-md w-full">
-            <input type="text" placeholder="Seach" name="" class="form-control">
+            <input type="text" [placeholder]="ui.search" name="" class="form-control">
             <div class="h-full scroll-y-auto mt-2 px-2" style="max-height: 650px;">
                 <div *ngFor="let data of users">
                     <app-card-data [data]="data" (handleHover)="selectedUser($event)" (handleDelete)="onDelete($event)" (handleEdit)="onEdit($event)"></app-card-data>
@@ -16,7 +16,7 @@
                 <div class="d-flex justify-content-center align-items-center flex-column">
                     <!-- <div class="spinner-border" role="status"></div> -->
                     <span class="fas fa-info"></span>
-                    <span>Seleccione uno...</span>
+                    <span>{{ ui.selectOne }}</span>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { HINT_SEARCH } from 'src/lib/strings';
 
 @Component({
   selector: 'app-search',
