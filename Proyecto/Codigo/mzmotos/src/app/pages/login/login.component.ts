@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
 
   stepCounter: number = 1;
 
+  loading: boolean = false;
+
   @ViewChild("forgetPassword") forgetPassword: ElementRef;
 
   constructor(
@@ -50,11 +52,13 @@ export class LoginComponent implements OnInit {
   }
 
   submitUser(loginForm: NgForm) {
+    this.loading = true;
     this.userService.signin(loginForm.value.username, loginForm.value.password)
       .subscribe((res: any) => {
         if (res) {
           this.authService.signin(res, this.input.keepLog);
           const token = decode(res);
+          this.loading = false;
           this.router.navigate([`/${token.role}`]);
         } else {
           this.toast.error("Usuario o contraseña incorrecta", "Invalido", {
@@ -65,7 +69,7 @@ export class LoginComponent implements OnInit {
         this.toast.error("Login failed", "Error", {
           timeOut: 3000,
         });
-        console.log(error);
+        this.loading = false;
       });
   }
 
@@ -81,13 +85,16 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitForgetPassword(forgetPasswordForm: NgForm) {
+    this.loading = true;
     if (this.stepCounter === 1) {
       this.forgetPasswordInput.username = forgetPasswordForm.value.username;
       this.checkUserExist(this.forgetPasswordInput.username);
+      this.loading = false;
     } else if (this.stepCounter === 2) {
       this.forgetPasswordInput.newPassword = forgetPasswordForm.value.password;
       this.forgetPasswordInput.confirmPassword = forgetPasswordForm.value.confirm;
       if (!this.checkPassword(this.forgetPasswordInput.newPassword, this.forgetPasswordInput.confirmPassword)) {
+        this.loading = false;
         return;
       }
       this.userService.updatePassword(this.forgetPasswordInput.username, this.forgetPasswordInput.newPassword)
@@ -96,6 +103,7 @@ export class LoginComponent implements OnInit {
             {
               timeOut: 3000,
             });
+          this.loading = false;
           this.modalClose();
         });
     }
