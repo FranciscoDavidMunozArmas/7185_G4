@@ -6,15 +6,15 @@
                     <form #userForm="ngForm" class="form-container" (ngSubmit)="onSubmit(userForm)">
                         <div *ngIf="!user">
                             <div class="form-group">
-                                <input type="text" [(ngModel)]="input.username" name="username" placeholder="username" class="form-control" #username autofocus required>
+                                <input type="text" [(ngModel)]="input.username" name="username" [placeholder]="hint.username" class="form-control" #username autofocus required>
                             </div>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-9">
-                                        <input type="text" [(ngModel)]="input.password" name="password" placeholder="Password" class="form-control" #password readonly>
+                                        <input type="text" [(ngModel)]="input.password" name="password" [placeholder]="hint.password" class="form-control" #password readonly>
                                     </div>
                                     <div class="col-3">
-                                        <button type="button" class="m-0 btn btn-primary btn-inverted btn-borderless" (click)="onGenerate()">GENERATE</button>
+                                        <button type="button" class="m-0 btn btn-primary btn-inverted btn-borderless" (click)="onGenerate()">{{ ui.generateButton }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -25,25 +25,25 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="input.name" name="name" placeholder="name" class="form-control" #name required>
+                            <input type="text" [(ngModel)]="input.name" name="name" [placeholder]="hint.name" class="form-control" #name required>
                         </div>
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="input.surname" name="surname" placeholder="surname" class="form-control" #surname required>
+                            <input type="text" [(ngModel)]="input.surname" name="surname" [placeholder]="hint.surname" class="form-control" #surname required>
                         </div>
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="input.ci" name="ci" placeholder="CI" class="form-control" #ci required>
+                            <input type="text" [(ngModel)]="input.ci" name="ci" [placeholder]="hint.ci" class="form-control" #ci required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="E-mail" [(ngModel)]="input.email" name="email" #email required>
+                            <input type="email" class="form-control" [placeholder]="hint.email" [(ngModel)]="input.email" name="email" #email required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="input.phone" name="phone" #phone required>
+                            <input type="text" class="form-control" [placeholder]="hint.phone" [(ngModel)]="input.phone" name="phone" #phone required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Addess" [(ngModel)]="input.address" name="address" #address required>
+                            <input type="text" class="form-control" [placeholder]="hint.address" [(ngModel)]="input.address" name="address" #address required>
                         </div>
                         <div class="my-4">
-                            <button type="submit" class="btn btn-primary w-full">Save</button>
+                            <button type="submit" class="btn btn-primary w-full">{{ ui.saveButton }}</button>
                         </div>
                     </form>
                 </div>

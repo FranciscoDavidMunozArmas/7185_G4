@@ -10,6 +10,7 @@ import { SalesmanService } from 'src/app/services/salesman.service';
 import { WarehouseService } from 'src/app/services/warehouse.service';
 import { CONSTANTS } from 'src/lib/constants';
 import { IdVerificator } from 'src/lib/idVerificator';
+import { GENERATE_PASSWORD_BUTTON_NAME, HINT_ADDRESS, HINT_CI_RUC, HINT_EMAIL, HINT_NAME, HINT_PASSWORD, HINT_PHONE, HINT_SURNAME, HINT_USERNAME, SAVE_BUTTON_NAME } from 'src/lib/strings';
 import { passwordGenerator } from '../../../lib/constants';
 
 @Component({
@@ -34,6 +35,22 @@ export class UserFormComponent implements OnInit {
     email: "",
     phone: "",
     address: "",
+  }
+
+  hint = {
+    username: HINT_USERNAME,
+    password: HINT_PASSWORD,
+    name: HINT_NAME,
+    surname: HINT_SURNAME,
+    ci: HINT_CI_RUC,
+    email: HINT_EMAIL,
+    phone: HINT_PHONE,
+    address: HINT_ADDRESS,
+  }
+
+  ui = {
+    saveButton: SAVE_BUTTON_NAME,
+    generateButton: GENERATE_PASSWORD_BUTTON_NAME,
   }
 
   constructor(

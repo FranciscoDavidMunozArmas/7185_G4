@@ -22,6 +22,7 @@ export const LOGIN_NAME = "Iniciar sesión";
 export const SIGNUP_NAME = "Registrarse";
 export const RESET_PASSWORD_NAME = "¿Olvidaste la contraseña?";
 export const KEEP_LOG_NAME = "Mantener sesión iniciada";
+export const SELECT_ONE_NAME = "Seleccione uno";
 export const LOGIN_BUTTON_NAME = "Ingresar";
 export const SIGNUP_BUTTON_NAME = "Registrarse";
 export const EDIT_BUTTON_NAME = "Editar";
@@ -29,6 +30,7 @@ export const DELETE_BUTTON_NAME = "Eliminar";
 export const SAVE_BUTTON_NAME = "Guardar";
 export const NEXT_BUTTON_NAME = "Siguiente";
 export const BACK_BUTTON_NAME = "Atrás";
+export const GENERATE_PASSWORD_BUTTON_NAME = "Generar";
 export const WRITE_USERNAME_NAME = "Escribe tu nombre de usuario";
 export const WRITE_PASSWORD_NAME = "Escribe tu contraseña";
 
