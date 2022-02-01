@@ -3,8 +3,8 @@
         <h4 class="mx-2">{{ data.name }} {{ data.surname }}</h4>
         <div class="absolute bottom right">
             <div class="d-flex flex-row">
-                <button class="btn btn-agree btn-borderless" style="color: green;" (click)="onClickEdit()">Edit</button>
-                <button class="btn btn-agree btn-borderless" style="color: red;" (click)="onClickDelete()">Delete</button>
+                <button class="btn btn-agree btn-borderless" style="color: green;" (click)="onClickEdit()">{{ui.editButton}}</button>
+                <button class="btn btn-agree btn-borderless" style="color: red;" (click)="onClickDelete()">{{ui.deleteButton}}</button>
             </div>
         </div>
     </div>

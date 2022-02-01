@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { DELETE_BUTTON_NAME, EDIT_BUTTON_NAME, NAME } from 'src/lib/strings';
 
 @Component({
   selector: 'app-card-data',
@@ -12,6 +13,11 @@ export class CardDataComponent implements OnInit {
   @Output() handleHover = new EventEmitter<any>();
   @Output() handleDelete = new EventEmitter<any>();
   @Output() handleEdit = new EventEmitter<any>();
+
+  ui = {
+    editButton: EDIT_BUTTON_NAME,
+    deleteButton: DELETE_BUTTON_NAME
+  }
 
   constructor() { }
 
