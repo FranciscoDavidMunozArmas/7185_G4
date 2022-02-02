@@ -45,6 +45,10 @@ import { CardDataComponent } from './components/card-data/card-data.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { ClientFormComponent } from './components/client-form/client-form.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductSelectionComponent } from './components/product-selection/product-selection.component';
+import { ProductFormComponent } from './components/product-form/product-form.component';
+import { ProductComponent } from './pages/subpages/product/product.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +82,11 @@ import { LoadingComponent } from './components/loading/loading.component';
     CardDataComponent,
     UserFormComponent,
     ClientFormComponent,
-    LoadingComponent
+    LoadingComponent,
+    ProductsComponent,
+    ProductSelectionComponent,
+    ProductFormComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

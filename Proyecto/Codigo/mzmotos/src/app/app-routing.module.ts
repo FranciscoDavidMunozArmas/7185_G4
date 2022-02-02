@@ -14,6 +14,7 @@ import { UserComponent } from './pages/subpages/user/user.component';
 import { ClientComponent } from './pages/subpages/client/client.component';
 import { ManagerReportInventoriesComponent } from './pages/subpages/manager-report-inventories/manager-report-inventories.component';
 import { ManagerReportSalesComponent } from './pages/subpages/manager-report-sales/manager-report-sales.component';
+import { ProductComponent } from './pages/subpages/product/product.component';
 
 const routes: Routes = [
   {
@@ -48,7 +49,18 @@ const routes: Routes = [
   {
     path: 'warehouse',
     component: WarehouseComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    children:[
+      {
+        path:"product",
+        component:ProductComponent
+      },
+      {
+        path: '',
+        redirectTo: 'product',
+        pathMatch: 'full'
+      }
+    ]
   },
   {
     path: 'admin',

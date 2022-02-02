@@ -1,0 +1,19 @@
+<div class="position-fixed top right" style="width: 600px;">
+    <div class="row">
+        <div class="col">
+            <div class="card h-screen">
+                <div class="card-body ">
+                    <app-search [placeholder]="'Buscar'" (searchEvent)="searchProduct($event)" (cancelEvent)="cancelSearch()"></app-search>
+                    <div class="scroll-y-auto">
+                        <div *ngFor="let product of searchResults">
+                            <div class="item-produt pointer" (click)="handleSelectionProduct(product)">
+                                <p>{{ product.name }}</p>
+                                <img src={{ product.image }}>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

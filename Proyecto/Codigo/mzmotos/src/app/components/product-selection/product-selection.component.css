@@ -1,0 +1,17 @@
+.card {
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.item-product {
+    border-radius: .75rem;
+    max-width: 600px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .1);
+}

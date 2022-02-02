@@ -1,0 +1,27 @@
+<div class="position-fixed top right" style="width: 600px;">
+    <div class="row">
+        <div class="col">
+            <div class="card h-screen">
+                <div class="card-body h-full d-flex justify-content-center align-items-center">
+                    <form #productForm="ngForm" class="form-container" (ngSubmit)="onSubmit(productForm)">
+                        <div class="form-group">
+                            <input type="text" [(ngModel)]="input.name" name="name" placeholder="Name" class="form-control" #name required>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" [(ngModel)]="input.image" class="form-control" [(ngModel)]="input.image" name="image" #image required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" placeholder="Price" [(ngModel)]="input.price" name="price" #price required>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" placeholder="Stock" [(ngModel)]="input.stock" name="stock" #stock required>
+                        </div>
+                        <div class="my-4">
+                            <button type="submit" class="btn btn-primary w-full">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
