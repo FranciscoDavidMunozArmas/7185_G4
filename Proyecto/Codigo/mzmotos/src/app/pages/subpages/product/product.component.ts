@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductFormComponent } from 'src/app/components/product-form/product-form.component';
 import { ProductService } from 'src/app/services/product.service';
+import { CONSTANTS } from 'src/lib/constants';
 
 @Component({
   selector: 'app-product',
@@ -15,6 +16,8 @@ export class ProductComponent implements OnInit {
   selected: any = null;
   editable: any = null;
   products: any[] = [];
+
+  imagePath: string;
 
   constructor(
     private modalService: NgbModal,
@@ -68,6 +71,7 @@ export class ProductComponent implements OnInit {
   
     selectedProduct(product: any) {
       this.selected = product;
+      this.imagePath = `${CONSTANTS.API_URL}/${this.selected.image}`
     }
   
     unselectedProduct() {
