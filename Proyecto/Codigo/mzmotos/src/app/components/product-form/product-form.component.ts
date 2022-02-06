@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 import { ToastrService } from 'ngx-toastr';
-import { Product } from 'src/app/models/Product';
+import { Product, productConverter } from 'src/app/models/Product';
 import { NgForm } from '@angular/forms';
+import { CONSTANTS, IMAGE_URI } from 'src/lib/constants';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -18,8 +19,11 @@ export class ProductFormComponent implements OnInit {
     image: "",
     price: "",
     stock: "",
-    id: ""
+    _id: ""
   }
+
+  file: File;
+  imageSelected: string | ArrayBuffer;
 
   constructor(
     private productService: ProductService,
@@ -29,25 +33,28 @@ export class ProductFormComponent implements OnInit {
   ngOnInit(): void {
     if (this.product) {
       this.input.name = this.product.name;
-      this.input.image = this.product.image;
       this.input.price = this.product.price;
       this.input.stock = this.product.stock;
-      this.input.id = this.product.id;
+      this.input._id = this.product._id;
+      this.imageSelected = `${CONSTANTS.API_URL}/${this.product.image}`
     }
   }
-  
-  
 
-  onChange(value: any) {
-    console.log(value);
+  onImageSelected(event: HTMLInputElement) {
+    if (event.files && event.files[0]) {
+      this.file = event.files[0];
+      const reader = new FileReader();
+      reader.onload = e => this.imageSelected = reader.result;
+      reader.readAsDataURL(this.file);
+    }
   }
+
+  onChange(value: HTMLInputElement) {
+    this.input = { ...this.input, [value.name]: value.value };
+  }
+
   onSubmit(productForm: NgForm) {
     if (!this.checkCreateForm(productForm.value) && !this.product) {
-      this.toast.error("Complete todos los campos", 'Error', {
-        timeOut: 1500,
-      });
-      return;
-    } else if (!this.checkEditForm(productForm.value)) {
       this.toast.error("Complete todos los campos", 'Error', {
         timeOut: 1500,
       });
@@ -55,50 +62,51 @@ export class ProductFormComponent implements OnInit {
     }
 
     if (!!this.product) {
-      this.onEditData(productForm.value);
+      console.log("Editng");
+      this.onEditData(this.input);
     } else {
-      this.onCreateData(productForm.value);
+      this.onCreateData(this.input);
     }
   }
 
   checkCreateForm(data: any) {
-    return !!data.name && !!data.image && !!data.price && !!data.stock
-  }
-
-  checkEditForm(data: any) {
-    return !!data.name && !!data.image && !!data.price && !!data.stock
+    return !!data.name && !!data.price && !!data.stock
   }
 
   onEditData(data: any) {
-    const newData: any = {
-      name: data.name ,
-      image: data.image,
-      price: data.price,
-      stock: data.stock,
+    try {
+      const newData = productConverter.fromJSON(data);
+      this.productService.putProductByID(newData._id, newData, this.file).subscribe(
+        (response: any) => {
+          this.onSubmitEvent.emit(response);
+          this.toast.success(`${response.message}`, 'Éxito', {
+            timeOut: 1500,
+          });
+        }
+      );
+    } catch (error: any) {
+      this.toast.error("Complete todos los campos", 'Error', {
+        timeOut: 1500,
+      });
     }
-
-    this.productService.putProductByID(this.product._id, newData).subscribe(
-      (data: any) => {
-        this.onSubmitEvent.emit(data);
-      }
-    );
   }
 
   onCreateData(data: any) {
-    const product: Product = {
-      name: data.name,
-      image: data.image,
-      price: data.price,
-      stock: data.stock,
-      _id: data.id
-    };
-    this.productService.postProduct(product,).subscribe(
-      (data: any) => {
-        this.onSubmitEvent.emit(data);
-      }
-    );
-    
-
+    try {
+      const newData = productConverter.fromJSON(data);
+      this.productService.postProduct(newData, this.file).subscribe(
+        (response: any) => {
+          this.onSubmitEvent.emit(response);
+          this.toast.success(`${response.message}`, 'Éxito', {
+            timeOut: 1500,
+          });
+        }
+      );
+    } catch (error: any) {
+      this.toast.error("Complete todos los campos", 'Error', {
+        timeOut: 1500,
+      });
+    }
   }
 
 }

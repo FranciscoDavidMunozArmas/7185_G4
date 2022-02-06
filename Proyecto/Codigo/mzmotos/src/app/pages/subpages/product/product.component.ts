@@ -34,7 +34,6 @@ export class ProductComponent implements OnInit {
     }
   
     submitData(data: any) {
-      console.log(data);
       if (!!this.editable) {
         this.editData(data);
       } else {

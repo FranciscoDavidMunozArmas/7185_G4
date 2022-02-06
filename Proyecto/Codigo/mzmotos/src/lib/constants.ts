@@ -9,6 +9,8 @@ export const CONSTANTS = {
     ROLES: ["admin", "salesman", "warehouse"],
 };
 
+export const IMAGE_URI = `${CONSTANTS.API_URL}/uploads/products/`;
+
 export const passwordGenerator = (length: number) => {
     const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRTSUVWXYZ0123456789";
     let password = "";

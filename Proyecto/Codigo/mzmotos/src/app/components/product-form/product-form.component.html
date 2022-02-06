@@ -5,10 +5,11 @@
                 <div class="card-body h-full d-flex justify-content-center align-items-center">
                     <form #productForm="ngForm" class="form-container" (ngSubmit)="onSubmit(productForm)">
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="input.name" name="name" placeholder="Name" class="form-control" #name required>
+                            <img [src]="imageSelected || 'assets/images/select_image.png'" (click)="imageInput.click()" />
+                            <input type="file" class="d-none" (change)="onImageSelected(imageInput)" #imageInput required>
                         </div>
                         <div class="form-group">
-                            <input type="file" [(ngModel)]="input.image" class="form-control" [(ngModel)]="input.image" name="image" #image required>
+                            <input type="text" [(ngModel)]="input.name" name="name" placeholder="Name" class="form-control" #name required>
                         </div>
                         <div class="form-group">
                             <input type="number" class="form-control" placeholder="Price" [(ngModel)]="input.price" name="price" #price required>
