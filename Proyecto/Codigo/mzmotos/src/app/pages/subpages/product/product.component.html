@@ -33,8 +33,8 @@
             <img [src]="imagePath || '/assets/images/non_image.png'" alt="">
             <div>
                 <h1>{{ selected.name }}</h1>
-                <h2>Precio: {{selected.price}}</h2>
-                <h2>Cantidad: {{selected.stock}}</h2>
+                <h2>{{ui.price}}: $ {{selected.price}}</h2>
+                <h2>{{ui.stock}}: {{selected.stock}}</h2>
             </div>
         </div>
     </div>
