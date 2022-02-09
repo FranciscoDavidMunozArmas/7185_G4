@@ -3,6 +3,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProductFormComponent } from 'src/app/components/product-form/product-form.component';
 import { ProductService } from 'src/app/services/product.service';
 import { CONSTANTS } from 'src/lib/constants';
+import { HINT_SEARCH, SELECT_ONE_NAME } from 'src/lib/strings';
 
 @Component({
   selector: 'app-product',
@@ -18,6 +19,11 @@ export class ProductComponent implements OnInit {
   products: any[] = [];
 
   imagePath: string;
+
+  ui = {
+    selectOne: SELECT_ONE_NAME,
+    search: HINT_SEARCH,
+  }
 
   constructor(
     private modalService: NgbModal,
