@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ClientFormComponent } from 'src/app/components/client-form/client-form.component';
 import { ClientService } from 'src/app/services/client.service';
+import { ADDRESS, CITY, CI_RUC, HINT_SEARCH, SELECT_ONE_NAME } from 'src/lib/strings';
 
 
 @Component({
@@ -16,6 +17,14 @@ export class ClientComponent implements OnInit {
   selected: any = null;
   editable: any = null;
   clients: any[] = [];
+
+  ui = {
+    selectOne: SELECT_ONE_NAME,
+    search: HINT_SEARCH,
+    address: ADDRESS,
+    ci_ruc: CI_RUC,
+    city: CITY
+  }
 
   constructor(
     private modalService: NgbModal,

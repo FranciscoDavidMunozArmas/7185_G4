@@ -4,7 +4,7 @@
     </div>
     <div class="row w-full h-full">
         <div class="container col-md w-full">
-            <input type="text" placeholder="Seach" name="" class="form-control">
+            <input type="text" [placeholder]="ui.search" name="" class="form-control">
             <div class="h-full scroll-y-auto mt-2 px-2" style="max-height: 650px;">
                 <div *ngFor="let data of clients">
                     <app-card-data [data]="data" (handleHover)="selectedClient($event)" (handleDelete)="onDelete($event)" (handleEdit)="onEdit($event)"></app-card-data>
@@ -15,7 +15,7 @@
             <div *ngIf="selected === null; else clientData">
                 <div class="d-flex justify-content-center align-items-center flex-column">
                     <span class="fas fa-info"></span>
-                    <span>Seleccione uno...</span>
+                    <span>{{ui.selectOne}}</span>
                 </div>
             </div>
         </div>
@@ -31,9 +31,9 @@
         </div>
         <div>
             <h1>{{ selected.name }} {{ selected.surname }}</h1>
-            <h4>RUC: {{selected.RUC}}</h4>
-            <h4>Direccion: {{selected.address}}</h4>
-            <h4>Ciudad: {{selected.city}}</h4>
+            <h4>{{ui.ci_ruc}}: {{selected.RUC}}</h4>
+            <h4>{{ui.address}}: {{selected.address}}</h4>
+            <h4>{{ui.city}}: {{selected.city}}</h4>
         </div>
     </div>
 </ng-template>
