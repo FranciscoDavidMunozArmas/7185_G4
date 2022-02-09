@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Product, productConverter } from 'src/app/models/Product';
 import { NgForm } from '@angular/forms';
 import { CONSTANTS, IMAGE_URI } from 'src/lib/constants';
+import { ERROR_MESSAGE_FILL_FIELDS, ERROR_TITLE, SUCCESS_MESSAGE_MODIFY, SUCCESS_TITLE } from 'src/lib/strings';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -55,14 +56,13 @@ export class ProductFormComponent implements OnInit {
 
   onSubmit(productForm: NgForm) {
     if (!this.checkCreateForm(productForm.value) && !this.product) {
-      this.toast.error("Complete todos los campos", 'Error', {
+      this.toast.error(ERROR_MESSAGE_FILL_FIELDS, ERROR_TITLE, {
         timeOut: 1500,
       });
       return;
     }
 
     if (!!this.product) {
-      console.log("Editng");
       this.onEditData(this.input);
     } else {
       this.onCreateData(this.input);
@@ -79,13 +79,13 @@ export class ProductFormComponent implements OnInit {
       this.productService.putProductByID(newData._id, newData, this.file).subscribe(
         (response: any) => {
           this.onSubmitEvent.emit(response);
-          this.toast.success(`${response.message}`, 'Éxito', {
+          this.toast.success(SUCCESS_MESSAGE_MODIFY, SUCCESS_TITLE, {
             timeOut: 1500,
           });
         }
       );
     } catch (error: any) {
-      this.toast.error("Complete todos los campos", 'Error', {
+      this.toast.error(ERROR_MESSAGE_FILL_FIELDS, ERROR_TITLE, {
         timeOut: 1500,
       });
     }
@@ -97,13 +97,13 @@ export class ProductFormComponent implements OnInit {
       this.productService.postProduct(newData, this.file).subscribe(
         (response: any) => {
           this.onSubmitEvent.emit(response);
-          this.toast.success(`${response.message}`, 'Éxito', {
+          this.toast.success(SUCCESS_MESSAGE_MODIFY, SUCCESS_TITLE, {
             timeOut: 1500,
           });
         }
       );
     } catch (error: any) {
-      this.toast.error("Complete todos los campos", 'Error', {
+      this.toast.error(ERROR_MESSAGE_FILL_FIELDS, ERROR_TITLE, {
         timeOut: 1500,
       });
     }
