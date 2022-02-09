@@ -3,6 +3,8 @@ import { ClientService } from 'src/app/services/client.service';
 import { ToastrService } from 'ngx-toastr';
 import { Client } from 'src/app/models/Client';
 import { NgForm } from '@angular/forms';
+import { phoneChecker } from 'src/lib/utils';
+import { ERROR_MESSAGE_WRONG_PHONE, ERROR_TITLE } from 'src/lib/strings';
 
 @Component({
   selector: 'app-client-form',
@@ -56,6 +58,12 @@ export class ClientFormComponent implements OnInit {
       return;
     } else if (!this.checkEditForm(clientForm.value)) {
       this.toast.error("Complete todos los campos", 'Error', {
+        timeOut: 1500,
+      });
+      return;
+    }
+    if(!phoneChecker(clientForm.value.phone)){
+      this.toast.error(ERROR_MESSAGE_WRONG_PHONE, ERROR_TITLE, {
         timeOut: 1500,
       });
       return;
