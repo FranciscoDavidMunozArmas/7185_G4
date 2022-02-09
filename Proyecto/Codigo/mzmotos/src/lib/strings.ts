@@ -9,6 +9,8 @@ export const HINT_ADDRESS = "Dirección";
 export const HINT_CITY = "Ciudad";
 export const HINT_CI_RUC = "CI/RUC";
 export const HINT_SEARCH = "Buscar";
+export const HINT_PRICE = "Precio";
+export const HINT_STOCK = "Cantidad";
 
 export const NAME = "Nombre";
 export const SURNAME = "Apellido";

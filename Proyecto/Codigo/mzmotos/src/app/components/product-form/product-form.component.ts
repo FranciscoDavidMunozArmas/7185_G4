@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Product, productConverter } from 'src/app/models/Product';
 import { NgForm } from '@angular/forms';
 import { CONSTANTS, IMAGE_URI } from 'src/lib/constants';
-import { ERROR_MESSAGE_FILL_FIELDS, ERROR_TITLE, SUCCESS_MESSAGE_MODIFY, SUCCESS_TITLE } from 'src/lib/strings';
+import { ERROR_MESSAGE_FILL_FIELDS, ERROR_TITLE, HINT_NAME, HINT_PRICE, HINT_STOCK, SUCCESS_MESSAGE_MODIFY, SUCCESS_TITLE } from 'src/lib/strings';
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
@@ -21,6 +21,12 @@ export class ProductFormComponent implements OnInit {
     price: "",
     stock: "",
     _id: ""
+  }
+
+  hint = {
+    name: HINT_NAME,
+    price: HINT_PRICE,
+    stock: HINT_STOCK,
   }
 
   file: File;

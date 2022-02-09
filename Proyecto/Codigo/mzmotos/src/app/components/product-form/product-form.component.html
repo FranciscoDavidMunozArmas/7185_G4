@@ -9,13 +9,13 @@
                             <input type="file" class="d-none" (change)="onImageSelected(imageInput)" #imageInput required>
                         </div>
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="input.name" name="name" placeholder="Name" class="form-control" #name required>
+                            <input type="text" [(ngModel)]="input.name" name="name" [placeholder]="hint.name" class="form-control" #name required>
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control" placeholder="Price" [(ngModel)]="input.price" name="price" #price required>
+                            <input type="number" class="form-control" [placeholder]="hint.price" [(ngModel)]="input.price" name="price" #price required>
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control" placeholder="Stock" [(ngModel)]="input.stock" name="stock" #stock required>
+                            <input type="number" class="form-control" [placeholder]="hint.stock" [(ngModel)]="input.stock" name="stock" #stock required>
                         </div>
                         <div class="my-4">
                             <button type="submit" class="btn btn-primary w-full">Save</button>
