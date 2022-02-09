@@ -10,8 +10,8 @@ import { SalesmanService } from 'src/app/services/salesman.service';
 import { WarehouseService } from 'src/app/services/warehouse.service';
 import { CONSTANTS } from 'src/lib/constants';
 import { IdVerificator } from 'src/lib/idVerificator';
-import { ERROR_MESSAGE_FILL_FIELDS, ERROR_MESSAGE_WRONG_CI, ERROR_TITLE, GENERATE_PASSWORD_BUTTON_NAME, HINT_ADDRESS, HINT_CI_RUC, HINT_EMAIL, HINT_NAME, HINT_PASSWORD, HINT_PHONE, HINT_SURNAME, HINT_USERNAME, SAVE_BUTTON_NAME } from 'src/lib/strings';
-import { passwordGenerator } from '../../../lib/constants';
+import { ERROR_MESSAGE_FILL_FIELDS, ERROR_MESSAGE_WRONG_CI, ERROR_MESSAGE_WRONG_PHONE, ERROR_TITLE, GENERATE_PASSWORD_BUTTON_NAME, HINT_ADDRESS, HINT_CI_RUC, HINT_EMAIL, HINT_NAME, HINT_PASSWORD, HINT_PHONE, HINT_SURNAME, HINT_USERNAME, SAVE_BUTTON_NAME } from 'src/lib/strings';
+import { passwordGenerator, phoneChecker } from '../../../lib/utils';
 
 @Component({
   selector: 'app-user-form',
@@ -99,6 +99,12 @@ export class UserFormComponent implements OnInit {
       });
       return;
     };
+    if(!phoneChecker(userForm.value.phone)) {
+      this.toast.error(ERROR_MESSAGE_WRONG_PHONE, ERROR_TITLE, {
+        timeOut: 1500,
+      });
+      return;
+    }
 
     if (!!this.user) {
       this.onEditData(userForm.value);

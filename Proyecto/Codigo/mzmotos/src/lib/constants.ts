@@ -10,12 +10,3 @@ export const CONSTANTS = {
 };
 
 export const IMAGE_URI = `${CONSTANTS.API_URL}/uploads/products/`;
-
-export const passwordGenerator = (length: number) => {
-    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRTSUVWXYZ0123456789";
-    let password = "";
-    for (let i = 0; i < length; i++) {
-        password += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    return password;
-};

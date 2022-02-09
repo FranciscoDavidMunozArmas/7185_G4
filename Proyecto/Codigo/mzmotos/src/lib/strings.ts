@@ -44,6 +44,7 @@ export const ERROR_MESSAGE_WRONG_CI_RUC = "Cedula/RUC incorrecta";
 export const ERROR_MESSAGE_GET_DATA = "Ha ocurrido un error al obtener los datos";
 export const ERROR_MESSAGE_MODIFY = "Ha ocurrido un error al modificar";
 export const ERROR_MESSAGE_DELETE = "Ha ocurrido un error al eliminar";
+export const ERROR_MESSAGE_WRONG_PHONE = "Teléfono incorrecto";
 
 export const SUCCESS_TITLE = "Éxito";
 export const SUCCESS_MESSAGE = "Operación realizada con éxito";
