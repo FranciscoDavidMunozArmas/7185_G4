@@ -4,7 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Client } from 'src/app/models/Client';
 import { NgForm } from '@angular/forms';
 import { phoneChecker } from 'src/lib/utils';
-import { ERROR_MESSAGE_WRONG_PHONE, ERROR_TITLE } from 'src/lib/strings';
+import { ERROR_MESSAGE_FILL_FIELDS, ERROR_MESSAGE_WRONG_PHONE, ERROR_TITLE, HINT_ADDRESS, HINT_CITY, HINT_CI_RUC, HINT_EMAIL, HINT_NAME, HINT_PHONE, HINT_SURNAME, SAVE_BUTTON_NAME } from 'src/lib/strings';
 
 @Component({
   selector: 'app-client-form',
@@ -18,7 +18,6 @@ export class ClientFormComponent implements OnInit {
 
   input = {
     name: "",
-    lastname: "",
     email: "",
     RUC: "",
     phone: "",
@@ -26,6 +25,20 @@ export class ClientFormComponent implements OnInit {
     city: "",
     surname: "",
     id: ""
+  }
+
+  hint = {
+    name: HINT_NAME,
+    surname: HINT_SURNAME,
+    email: HINT_EMAIL,
+    RUC: HINT_CI_RUC,
+    phone: HINT_PHONE,
+    address: HINT_ADDRESS,
+    city: HINT_CITY
+  }
+
+  ui = {
+    saveButton: SAVE_BUTTON_NAME,
   }
 
   constructor(
@@ -52,12 +65,12 @@ export class ClientFormComponent implements OnInit {
 
   onSubmit(clientForm: NgForm) {
     if (!this.checkCreateForm(clientForm.value) && !this.client) {
-      this.toast.error("Complete todos los campos", 'Error', {
+      this.toast.error(ERROR_MESSAGE_FILL_FIELDS, ERROR_TITLE, {
         timeOut: 1500,
       });
       return;
     } else if (!this.checkEditForm(clientForm.value)) {
-      this.toast.error("Complete todos los campos", 'Error', {
+      this.toast.error(ERROR_MESSAGE_FILL_FIELDS, ERROR_TITLE, {
         timeOut: 1500,
       });
       return;

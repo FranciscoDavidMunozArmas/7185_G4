@@ -5,28 +5,28 @@
                 <div class="card-body h-full d-flex justify-content-center align-items-center">
                     <form #clientForm="ngForm" class="form-container" (ngSubmit)="onSubmit(clientForm)">
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="input.name" name="name" placeholder="name" class="form-control" #name required>
+                            <input type="text" [(ngModel)]="input.name" name="name" [placeholder]="hint.name" class="form-control" #name required>
                         </div>
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="input.surname" name="surname" placeholder="surname" class="form-control" #surname required>
+                            <input type="text" [(ngModel)]="input.surname" name="surname" [placeholder]="hint.surname" class="form-control" #surname required>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" placeholder="E-mail" [(ngModel)]="input.email" name="email" #email required>
+                            <input type="email" class="form-control" [placeholder]="hint.email" [(ngModel)]="input.email" name="email" #email required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Phone" [(ngModel)]="input.phone" name="phone" #phone required>
+                            <input type="text" class="form-control" [placeholder]="hint.phone" [(ngModel)]="input.phone" name="phone" #phone required>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Address" [(ngModel)]="input.address" name="address" #address required>
+                            <input type="text" class="form-control" [placeholder]="hint.address" [(ngModel)]="input.address" name="address" #address required>
                         </div>
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="input.city" name="city" placeholder="city" class="form-control" #city required>
+                            <input type="text" [(ngModel)]="input.city" name="city" [placeholder]="hint.city" class="form-control" #city required>
                         </div>
                         <div class="form-group">
-                            <input type="text" [(ngModel)]="input.RUC" name="RUC" placeholder="RUC" class="form-control" #RUC required>
+                            <input type="text" [(ngModel)]="input.RUC" name="RUC" [placeholder]="hint.RUC" class="form-control" #RUC required>
                         </div>
                         <div class="my-4">
-                            <button type="submit" class="btn btn-primary w-full">Save</button>
+                            <button type="submit" class="btn btn-primary w-full">{{ui.saveButton}}</button>
                         </div>
                     </form>
                 </div>
