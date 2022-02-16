@@ -18,10 +18,12 @@ export class SalesmanComponent implements OnInit {
     this.paths.push({
       route: "agenda",
       icon: "far fa-calendar",
+      text: "Agenda"
     });
     this.paths.push({
       route: "catalogo",
-      icon: "fas fa-shopping-bag"
+      icon: "fas fa-shopping-bag",
+      text: "Catalogo"
     });
   }
 

@@ -25,18 +25,22 @@ export class ManagerComponent implements OnInit {
     this.paths.push({
       route: "user",
       icon: "fas fa-user",
+      text: "Usuarios"
     });
     this.paths.push({
       route: "client",
-      icon: "fas fa-users"
+      icon: "fas fa-users",
+      text: "Clientes"
     });
     this.paths.push({
       route: "inventory",
-      icon: "fas fa-chart-pie"
+      icon: "fas fa-chart-pie",
+      text: "Inventario"
     });
     this.paths.push({
       route: "order",
-      icon: "fas fa-shopping-cart"
+      icon: "fas fa-shopping-cart",
+      text: "Pedidos"
     });
   }
 
