@@ -22,10 +22,12 @@ export class WarehouseComponent implements OnInit {
     this.paths.push({
       route: "product",
       icon: "fas fa-shopping-bag",
+      text: "Productos"
     });
     this.paths.push({
       route: "reportInventory",
       icon: "fas fa-clipboard-list",
+      text: "Reporte de Inventario"
     });
   }
 
