@@ -20,7 +20,9 @@ const schema = new Schema({
                 RUC: String,
                 name: String,
                 address: String,
-                city: String
+                city: String,
+                phone: String,
+                email: String
             }
         }
     ]

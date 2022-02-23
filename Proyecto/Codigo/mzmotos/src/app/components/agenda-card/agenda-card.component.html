@@ -29,7 +29,7 @@
         <a class="btn close-btn " (click)="modalClose() "><span class="fa fa-times "></span></a>
     </div>
     <div class="d-flex justify-content-center">
-        <app-notify text="¿Esta seguro que desea eliminar?" (notifyEvent)="notify($event)" (cancelEvent)="modalClose()"></app-notify>
+        <app-notify [data]="appointment" (notifyEvent)="notify($event)" (cancelEvent)="modalClose()"></app-notify>
     </div>
 </ng-template>
 

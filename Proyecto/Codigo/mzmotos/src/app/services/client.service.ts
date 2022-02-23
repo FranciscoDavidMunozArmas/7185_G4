@@ -37,4 +37,12 @@ export class ClientService {
   getClientsMany(many: string[]){
     return this.http.post(`${CONSTANTS.API_URL}/clients/many`, many);
   }
+
+  sendsms(phone: string, message: string){
+    return this.http.post(`${CONSTANTS.API_URL}/notify/sms`, {phone,message});
+  }
+
+  sendEmail(email: string, subject: string, message: string){
+    return this.http.post(`${CONSTANTS.API_URL}/notify/email`, {email, subject,message});
+  }
 }
